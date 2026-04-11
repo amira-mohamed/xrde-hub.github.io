@@ -327,6 +327,47 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.3s;
+            position: relative;
+        }
+
+        .project-card.soon {
+            opacity: 0.75;
+        } 
+
+        .ribbon {
+            position: absolute;
+            top: 8px;
+            right: -35px;
+
+            background: linear-gradient(135deg, #dc2121, #ec0909);
+            color: white;
+
+            padding: 6px 45px;
+            font-size: 17px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            transform: rotate(45deg);
+            z-index: 2;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .ribbon.pro1 {
+            position: absolute;
+            top: 8px;
+            right: -45px;
+
+            background: linear-gradient(135deg, #13cc5a, #6af03d);
+            color: white;
+
+            padding: 6px 45px;
+            font-size: 17px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            transform: rotate(45deg);
+            z-index: 2;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
         .project-card:hover {
@@ -348,7 +389,7 @@
         }
 
         .project-name {
-            font-size: 1.3rem;
+            font-size: 18px;
             font-weight: 700;
         }
 
@@ -698,9 +739,10 @@
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
+                    <div class="ribbon pro1"> متوفر الأن</div>
                     <div class="project-header">
                         <div class="project-number">01</div>
-                        <div class="project-name">RFM Analysis Kit</div>
+                        <div class="project-name">Customer Segmentation Analysis Kit</div>
                     </div>
                     <div class="project-content">
                         <h4 style="color: var(--primary); margin-bottom: 1rem;">ما ستحصل عليه:</h4>
@@ -717,7 +759,8 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="project-card">
+                <div class="project-card soon">
+                    <div class="ribbon">قريباً</div>
                     <div class="project-header">
                         <div class="project-number">02</div>
                         <div class="project-name">Enterprise Integration Kit</div>
@@ -737,7 +780,8 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="project-card">
+                <div class="project-card soon">
+                    <div class="ribbon">قريباً</div>
                     <div class="project-header">
                         <div class="project-number">03</div>
                         <div class="project-name">Retail Insights Kit</div>
