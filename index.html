@@ -32,22 +32,39 @@
             font-family: 'Cairo', 'Poppins', sans-serif;
             color: var(--text);
             line-height: 1.6;
+            padding-top: 60px;
         }
 
         /* ==================== NAVBAR ==================== */
-           nav {
+       /* nav {
+            background: white;
+            padding: 0rem ;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }*/
+
+            nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 1000;
+
     background: white;
-    padding: 0 2rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    height: 60px;           /* ارتفاع ثابت صغير */
-    overflow: visible;      /* اللوجو يطلع */
-}
+
+    padding: 0 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+                }
+
         .logo-container {
             display: flex;
             align-items: center;
@@ -55,20 +72,22 @@
         }
         /*
         .logo-img {
-            height: 150px;
+            height: 50px;
             width: auto;
             object-fit: contain;
         }*/
         .logo-img {
-            height: 150px;        /* الارتفاع الثابت */
+           /* height: 50px;      /* الارتفاع الثابت */ 
             width: auto;         /* العرض يتكيف تلقائياً */
             max-width: 200px;    /* حد أقصى للعرض */
             display: block;
             object-fit: contain; /* الحفاظ على نسب الصورة */
             transition: transform 0.3s ease;
+            height: 150px;
+  
         }
-
-  /*      .brand-name {
+/*
+        .brand-name {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
@@ -452,15 +471,90 @@
             text-align: center;
         }
 
+        /* ==================== HAMBURGER MENU ==================== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
         /* ==================== RESPONSIVE ==================== */
         @media (max-width: 768px) {
             nav {
-                flex-direction: column;
-                gap: 1rem;
+                padding: 0.8rem 1rem;
+                min-height: 60px;
+            }
+
+            .logo-img {
+                height: 150px;
+            }
+
+            .hamburger {
+                display: flex;
             }
 
             .nav-links {
+                position: absolute;
+                top: 60px;
+                right: 0;
+                left: 0;
+                flex-direction: column;
+                gap: 0;
+                background: white;
+                list-style: none;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                max-height: 300px;
+            }
+
+            .nav-links li {
+                border-bottom: 1px solid #EEE;
+                padding: 1rem 2rem;
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-links a {
+                display: block;
+            }
+
+            .nav-links a::after {
                 display: none;
+            }
+
+            .btn-cta {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
             }
 
             .hero {
@@ -516,22 +610,28 @@
     <nav>
         <div class="logo-container">
             <img src="v1.png" alt="XRDE Logo" class="logo-img">
-       <!--    <span class="brand-name">XRDE Hub</span> -->
         </div>
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
             <li><a href="#vision">الرؤية</a></li>
             <li><a href="#why">لماذا معنا</a></li>
             <li><a href="#projects">المشاريع</a></li>
             <li><a href="#about">عنا</a></li>
         </ul>
-        <a href="https://wa.me/201234567890" class="btn-cta">تواصل معنا</a>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <a href="https://wa.me/201234567890" class="btn-cta">تواصل معنا</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </nav>
 
     <!-- ==================== HERO SECTION ==================== -->
     <section class="hero">
         <div class="hero-content">
             <h1>
-                توقف عن <span class="highlight">"الخوف"</span> من البيانات.. وابدأ في <span class="highlight">"بناء"</span> مشاريع حقيقية
+                توقف عن <span class="highlight">"التشتت"</span> البيانات.. وابدأ في <span class="highlight">"بناء"</span> مشاريع حقيقية
             </h1>
             <p>
                 في <strong>XRDE Hub</strong>، ننقل مهاراتك من مجرد "أكواد صماء" إلى <strong>حقائب مشاريع بيزنس متكاملة</strong> تحاكي واقع الشركات في مصر والوطن العربي. لا مزيد من البيانات الوهمية، حان الوقت لبناء بورتفوليو يتحدث بلغة الأرقام والنتائج.
@@ -542,7 +642,7 @@
             </div>
         </div>
         <div class="hero-image">
-            <img src="Amira.png" alt="Amira - Data Analyst">
+            <img src="amira.png" alt="Amira - Data Analyst">
         </div>
     </section>
 
@@ -663,7 +763,7 @@
     <section class="about-section" id="about">
         <div class="about-container">
             <div class="about-image">
-                <img src="Amira.png"  alt="Amira Abdelsalam - Founder">
+                <img src="amira.png" alt="Amira Abdelsalam - Founder">
             </div>
             <div class="about-content">
                 <h2>👋 عن XRDE Hub</h2>
@@ -697,5 +797,32 @@
         <p>&copy; 2026 XRDE Hub - منصة تحليل البيانات العملية | جميع الحقوق محفوظة</p>
         <p>مصنوعة بـ ❤️ لخدمة سوق البيانات العربي</p>
     </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
