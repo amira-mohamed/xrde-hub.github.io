@@ -35,28 +35,37 @@
         }
 
         /* ==================== NAVBAR ==================== */
-        nav {
-            background: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
+           nav {
+    background: white;
+    padding: 0 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 60px;           /* ارتفاع ثابت صغير */
+    overflow: visible;      /* اللوجو يطلع */
+}
         .logo-container {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-
+        /*
         .logo-img {
-            height: 50px;
+            height: 150px;
             width: auto;
             object-fit: contain;
+        }*/
+        .logo-img {
+            height: 150px;        /* الارتفاع الثابت */
+            width: auto;         /* العرض يتكيف تلقائياً */
+            max-width: 200px;    /* حد أقصى للعرض */
+            display: block;
+            object-fit: contain; /* الحفاظ على نسب الصورة */
+            transition: transform 0.3s ease;
         }
 
         .brand-name {
