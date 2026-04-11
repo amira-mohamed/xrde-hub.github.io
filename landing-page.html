@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XRDE Hub - منصة تحليل البيانات العملية</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #5B4B9D;
+            --primary-light: #7B68A6;
+            --accent: #FF8C42;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+            --success: #2ECC71;
+            --text: #2C3E50;
+            --text-light: #7F8C8D;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* ==================== NAVBAR ==================== */
+        nav {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-cta {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(91, 75, 157, 0.3);
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            min-height: 90vh;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        .hero-content h1 .highlight {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: 'Cairo', sans-serif;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(91, 75, 157, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: 'Cairo', sans-serif;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .hero-image {
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(91, 75, 157, 0.2));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* ==================== VISION SECTION ==================== */
+        .vision-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .vision-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            opacity: 0.95;
+        }
+
+        /* ==================== WHY SECTION ==================== */
+        .why-section {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .why-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .why-card {
+            background: linear-gradient(135deg, #F8F9FA 0%, white 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border-right: 4px solid var(--accent);
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .why-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(91, 75, 157, 0.15);
+        }
+
+        .why-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .why-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* ==================== PROJECTS SECTION ==================== */
+        .projects-section {
+            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+            padding: 4rem 2rem;
+        }
+
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(91, 75, 157, 0.2);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .project-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .project-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #EEE;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .project-features li:last-child {
+            border-bottom: none;
+        }
+
+        .project-features li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* ==================== ABOUT SECTION ==================== */
+        .about-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));
+            border-radius: 15px;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+
+        /* ==================== CTA SECTION ==================== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent) 0%, #FF6B1A 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn-whatsapp {
+            background: white;
+            color: var(--accent);
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            font-family: 'Cairo', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .vision-section, .projects-section, .about-section, .cta-section {
+                padding: 2rem 1rem;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .hero-image {
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
+    </style>
+</head>
+<body>
+    <!-- ==================== NAVBAR ==================== -->
+    <nav>
+        <div class="logo-container">
+            <img src="v1.png" alt="XRDE Logo" class="logo-img">
+            <span class="brand-name">XRDE Hub</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#vision">الرؤية</a></li>
+            <li><a href="#why">لماذا معنا</a></li>
+            <li><a href="#projects">المشاريع</a></li>
+            <li><a href="#about">عنا</a></li>
+        </ul>
+        <a href="https://wa.me/201234567890" class="btn-cta">تواصل معنا</a>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                توقف عن <span class="highlight">"مذاكرة"</span> البيانات.. وابدأ في <span class="highlight">"بناء"</span> مشاريع حقيقية
+            </h1>
+            <p>
+                في <strong>XRDE Hub</strong>، ننقل مهاراتك من مجرد "أكواد صماء" إلى <strong>حقائب مشاريع بيزنس متكاملة</strong> تحاكي واقع الشركات في مصر والوطن العربي. لا مزيد من البيانات الوهمية، حان الوقت لبناء بورتفوليو يتحدث بلغة الأرقام والنتائج.
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn-primary">اكتشف المشاريع</a>
+                <a href="https://wa.me/201557361769" class="btn-secondary">تواصل عبر واتساب</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="Amira.png" alt="Amira - Data Analyst">
+        </div>
+    </section>
+
+    <!-- ==================== VISION SECTION ==================== -->
+    <section class="vision-section" id="vision">
+        <h2 class="section-title">🎯 رؤيتنا: جسر حقيقي بين التعلم والاحتراف</h2>
+        <div class="vision-content">
+            <p>
+                نحن نؤمن أن الفرق بين "محلل بيانات مبتدئ" و"خبير مطلوب في الشركات" ليس عدد الكورسات، بل هو 
+                <strong>الاحتكاك بمشاكل البيزنس الحقيقية</strong>. 
+                هدفنا هو تمكين كل باحث عن فرصة أو موظف طموح من امتلاك "الأدوات والمنطق" اللي تخليه يحل أعقد المشاكل التقنية في دقائق.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==================== WHY SECTION ==================== -->
+    <section class="why-section" id="why">
+        <div class="why-container">
+            <h2 class="section-title">💡 لماذا XRDE Hub؟</h2>
+            <div class="why-grid">
+                <div class="why-card">
+                    <h3>🌍 نكهة السوق المحلي</h3>
+                    <p>مشاريعنا بتراعي طبيعة البيزنس في منطقتنا (صيدليات، عقارات، سلاسل توريد، ربط قواعد بيانات معقدة).</p>
+                </div>
+                <div class="why-card">
+                    <h3>💼 منطق البيزنس أولاً</h3>
+                    <p>مش بنعلمك "إزاي" تستخدم الأداة بس، بنعلمك "ليه" بنعمل التحليل ده وازاي تقدمه للمدير.</p>
+                </div>
+                <div class="why-card">
+                    <h3>📊 بورتفوليو يملأ العين</h3>
+                    <p>هتخرج من كل حقيبة بمشروع كامل (كود، داشبورد، دليل تشغيل) جاهز للعرض في أي انترفيو.</p>
+                </div>
+                <div class="why-card">
+                    <h3>⚡ توفير مجهود السنين</h3>
+                    <p>بنختصر عليك رحلة البحث عن "Errors" الربط والتحليل، وبنديك "الخلاصة" في حقيبة واحدة.</p>
+                </div>
+                <div class="why-card">
+                    <h3>🎓 منهج متطور</h3>
+                    <p>تدريب عملي على أحدث التقنيات والأدوات المستخدمة في سوق العمل الحالي.</p>
+                </div>
+                <div class="why-card">
+                    <h3>🚀 نتائج مثبتة</h3>
+                    <p>آلاف الطلاب حققوا ترقيات وظيفية وفرص عمل من خلال مشاريعنا.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROJECTS SECTION ==================== -->
+    <section class="projects-section" id="projects">
+        <div class="projects-container">
+            <h2 class="section-title">🛠️ حقائب مشاريع جاهزة للانطلاق</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-number">01</div>
+                        <div class="project-name">RFM Analysis Kit</div>
+                    </div>
+                    <div class="project-content">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">ما ستحصل عليه:</h4>
+                        <ul class="project-features">
+                            <li>كود Python متقدم</li>
+                            <li>داشبورد Power BI تفاعلي</li>
+                            <li>ملفات بيانات حقيقية</li>
+                            <li>دليل عملي شامل</li>
+                        </ul>
+                        <p style="color: var(--text-light); margin-top: 1.5rem; font-size: 0.95rem; border-top: 1px solid #EEE; padding-top: 1rem;">
+                            <strong>الفائدة العملية:</strong> تقسيم العملاء باحترافية وتوجيه قرارات التسويق بناءً على سلوك الشراء.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-number">02</div>
+                        <div class="project-name">Enterprise Integration Kit</div>
+                    </div>
+                    <div class="project-content">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">ما ستحصل عليه:</h4>
+                        <ul class="project-features">
+                            <li>دليل ربط Oracle بـ Power BI</li>
+                            <li>ملفات SQL احترافية</li>
+                            <li>معالجة الأخطاء الشائعة</li>
+                            <li>تدفق بيانات تلقائي</li>
+                        </ul>
+                        <p style="color: var(--text-light); margin-top: 1.5rem; font-size: 0.95rem; border-top: 1px solid #EEE; padding-top: 1rem;">
+                            <strong>الفائدة العملية:</strong> حل أصعب مشاكل الربط التقني في الشركات الكبيرة.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-number">03</div>
+                        <div class="project-name">Retail Insights Kit</div>
+                    </div>
+                    <div class="project-content">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">ما ستحصل عليه:</h4>
+                        <ul class="project-features">
+                            <li>تحليل مبيعات متقدم</li>
+                            <li>تقارير ربحية تفاعلية</li>
+                            <li>توقعات موسمية</li>
+                            <li>استراتيجيات المخزون</li>
+                        </ul>
+                        <p style="color: var(--text-light); margin-top: 1.5rem; font-size: 0.95rem; border-top: 1px solid #EEE; padding-top: 1rem;">
+                            <strong>الفائدة العملية:</strong> فهم المواسم واكتشاف فرص النمو في السوق المصري.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="amira.png" alt="Amira Abdelsalam - Founder">
+            </div>
+            <div class="about-content">
+                <h2>👋 عن XRDE Hub</h2>
+                <p>
+                    <strong>بخبرة تزيد عن 5 سنوات في قلب سوق تحليل البيانات</strong>، وعشرات المشاريع المنفذة في قطاعات حيوية، تم تأسيس XRDE Hub ليكون المختبر العملي اللي كنت أتمنى ألاقيه وأنا ببدأ طريقي.
+                </p>
+                <p>
+                    <strong>هدفنا مش مجرد تعليم</strong>، هدفنا نخرج "قادة بيانات" بيعرفوا يغيروا واقع شركاتهم. كل مشروع في منصتنا مصمم بناءً على خبرة حقيقية من سوق العمل المصري.
+                </p>
+                <p>
+                    📍 <strong>مصر 🇪🇬</strong> - كلنا من هنا، ونفهم احتياجات السوق المحلي والعربي بشكل عميق.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA SECTION ==================== -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>🚀 جاهز تحول مسارك المهني وتبدأ أول مشروع حقيقي؟</h2>
+            <p>انضم لـ XRDE Hub دلوقتى وابدأ في بناء مستقبلك كخبير بيانات لا يمكن الاستغناء عنه.</p>
+            <a href="https://wa.me/201234567890" class="btn-whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                تواصل معنا عبر واتساب الآن
+            </a>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <p>&copy; 2024 XRDE Hub - منصة تحليل البيانات العملية | جميع الحقوق محفوظة</p>
+        <p>مصنوعة بـ ❤️ لخدمة سوق البيانات العربي</p>
+    </footer>
+</body>
+</html>
