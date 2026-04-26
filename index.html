@@ -76,7 +76,8 @@
     height: 60px;
     z-index: 1000;
 
-    background: white;
+    background: rgba(10, 25, 47, 0.8);
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -302,7 +303,7 @@
         /* ==================== SOLUTION SECTION ==================== */
         .solution-section {
             background: transparent;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
@@ -347,11 +348,20 @@
         .solution-image {
             text-align: center;
             perspective: 1000px;
+            overflow: visible;
+        }
+
+        .inner-image {
+            width: 95%;
+            height: 97%;
+            object-fit: cover; /* لملء المربع بالكامل بدون تمطيط */
+            border-radius: 15px; /* نفس الـ border-radius الخاص بالمربع الأصلي */
+            opacity: 0.9; /* اختيارية: لجعل الصورة تتداخل قليلاً مع لون الخلفية المتدرج */
         }
 
         .solution-image-box {
             width: 100%;
-            height: 300px;
+            height: 400px;
             background: linear-gradient(135deg, rgba(74, 144, 226, 0.3) 0%, rgba(0, 217, 255, 0.2) 100%);
             border-radius: 15px;
             border: 1px solid rgba(0, 217, 255, 0.4);
@@ -536,19 +546,21 @@
             max-width: 100%;
             height: auto;
             border-radius: 20px;
-            box-shadow: 0 0 60px rgba(0, 217, 255, 0.4), 
+           /* box-shadow: 0 0 60px rgba(0, 217, 255, 0.4), 
                         0 0 100px rgba(74, 144, 226, 0.2);
-            border: 2px solid rgba(0, 217, 255, 0.4);
+            border: 2px solid rgba(0, 217, 255, 0.4) ;
+            */
+            filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.461));
             transition: all 0.3s;
             transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
-            filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.3));
-        }
+          
+        } 
 
         .about-image img:hover {
             transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
-            box-shadow: 0 0 80px rgba(0, 217, 255, 0.6), 
-                        0 0 120px rgba(74, 144, 226, 0.3);
-        }
+         /*  box-shadow: 0 0 80px rgba(0, 217, 255, 0.6), 
+                       0 0 120px rgba(74, 144, 226, 0.3) ; */
+        } 
 
         .about-content h2 {
             font-size: 2.5rem;
@@ -874,7 +886,7 @@
         <ul class="nav-links">
             <li><a href="#curriculum">المحتوى</a></li>
             <li><a href="#free-videos">فيديوهات مجانية</a></li>
-            <li><a href="#about">عن أميرة</a></li>
+         <!-- <li><a href="#about">نبذة عن المدرب</a></li> -->
             <li><a href="#testimonials">آراء المتدربين</a></li>
         </ul>
         <button class="btn-nav" onclick="document.getElementById('pricing-section').scrollIntoView({behavior: 'smooth'})">اشترك الآن</button>
@@ -934,9 +946,10 @@
                     <li><strong>أدوات قوية:</strong> Excel | Python | Power BI</li>
                 </ul>
             </div>
+            
             <div class="solution-image">
                 <div class="solution-image-box">
-                    📈 📊 💡
+                 <img src="product1.png" alt="Project Preview" class="inner-image">
                 </div>
             </div>
         </div>
@@ -1031,7 +1044,13 @@
                 </div>
                 <div class="video-content" id="video-0">
                     <p style="margin-bottom: 1rem; color: var(--text-gray);">شرح نظري شامل لمفهوم RFM وأهميته في التحليل</p>
-                    <iframe class="video-frame" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                        <iframe class="video-frame" 
+                                src="https://www.youtube.com/embed/ScWGqSqqUh0" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                        </iframe>
                 </div>
             </div>
             <div class="video-card">
@@ -1043,9 +1062,14 @@
                 </div>
                 <div class="video-content" id="video-1">
                     <p style="margin-bottom: 1rem; color: var(--text-gray);">فهم المشاكل البيزنس وكيفية حلها باستخدام البيانات</p>
-                    <iframe class="video-frame" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                         <iframe class="video-frame" 
+                                src="https://www.youtube.com/embed/32q1JqrHAlo" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                        </iframe>
                 </div>
-            </div>
         </div>
     </section>
 
@@ -1055,7 +1079,7 @@
         
         <div class="about-container">
             <div class="about-image">
-                <img src="amira-profile.png" alt="أميرة عبد السلام - مؤسسة XRDE Hub">
+                <img src="amira.png" alt="أميرة عبد السلام - مؤسسة XRDE Hub">
             </div>
             <div class="about-content">
                 <h2>رحلتي في عالم البيانات</h2>
@@ -1113,17 +1137,17 @@
             </div>
             <div class="testimonial">
                 <p class="testimonial-text">
-                    "الشرح واضح جداً وسهل المتابعة، والتطبيق العملي كان ممتاز. استخدمت الطريقة مع عملاء الشركة وشفت نتايج ملموسة في أسبوع!"
+                "Thank you so much Mrs.Amira, the session was really rich of information and helpful to guide us into the right path <3"
                 </p>
-                <div class="testimonial-author">فاطمة حسن</div>
-                <div class="testimonial-role">محللة بيانات - شركة عقارات</div>
+                <div class="testimonial-author">Salma</div>
+                <div class="testimonial-role">Data Analyst</div>
             </div>
             <div class="testimonial">
                 <p class="testimonial-text">
-                    "أفضل استثمار في تطوري المهني. الكورس ساعدني أفهم أهمية البيانات والسرد البصري. بقيت أقدر أقدم تقارير تؤثر فعلاً!"
+                    "شرح حضرتك سلس وبسيط وشرحتى سكيلز مش كله بيركز فيها فى اى كورس Data Analysis شكرا لحضرتك وربنا يجازيكى خير"
                 </p>
-                <div class="testimonial-author">محمد علي</div>
-                <div class="testimonial-role">مسؤول تسويق - متجر إلكتروني</div>
+                <div class="testimonial-author">Rana Khaled</div>
+                <div class="testimonial-role">Data Analyst</div>
             </div>
             
             <div class="slideshow-arrows">
@@ -1148,7 +1172,9 @@
                 <p>العرض ينتهي في <strong>1 مايو 2026</strong></p>
             </div>
 
-            <button class="btn-primary" style="width: 100%; margin: 1.5rem 0; padding: 1.2rem;">
+            <button class="btn-primary" 
+             onclick="window.open('https://wa.me/+201557361769?text=تفاصيل+للاشتراك+في+كورس+XRDE', '_blank')"
+            style="width: 100%; margin: 1.5rem 0; padding: 1.2rem;" >
                 اشترك الآن بـ 390 جنيه فقط ✅
             </button>
 
@@ -1171,14 +1197,13 @@
 
     <!-- ==================== FOOTER ==================== -->
     <footer>
-        <p>&copy; 2024 XRDE Academy - كورس RFM Analysis والـ Data Storytelling</p>
-        <p>من بطاقة أميرة عبد السلام | جميع الحقوق محفوظة | صُنع بـ ❤️ لتمكين محللي البيانات في الوطن العربي</p>
+        <p>&copy; 2026 XRDE Hub - منصة تحليل البيانات العملية | جميع الحقوق محفوظة</p>
     </footer>
 
     <script>
         // Countdown Timer
         function updateCountdown() {
-            const countdownDate = new Date("May 1, 2026").getTime();
+            const countdownDate = new Date("May 5, 2026").getTime();
             
             const countdown = setInterval(function() {
                 const now = new Date().getTime();

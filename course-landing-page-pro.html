@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كورس RFM Analysis - حول بياناتك لأرباح | XRDE Hub</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #020617;
+            --primary-navy: #0a192f;
+            --primary-blue: #1a4d7a;
+            --primary-royal: #4a90e2;
+            --accent-cyan: #00d9ff;
+            --accent-electric: #00ffcc;
+            --text-light: #e0f7ff;
+            --text-white: #ffffff;
+            --text-gray: #b0c4de;
+            --glow-blue: rgba(0, 217, 255, 0.3);
+            --glow-cyan: rgba(0, 255, 204, 0.2);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-navy) 100%);
+            background-attachment: fixed;
+            color: var(--text-light);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* Radial Gradient Background Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -20%;
+            left: -5%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ==================== NAVBAR ==================== */
+        nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 25, 47, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-electric) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px var(--glow-blue);
+        }
+
+        .btn-nav {
+            background: linear-gradient(135deg, var(--primary-royal) 0%, var(--accent-cyan) 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 217, 255, 0.6);
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--accent-cyan) 50%, var(--accent-electric) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-royal) 0%, var(--accent-cyan) 100%);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            font-family: 'Cairo', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.8);
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-cyan);
+            padding: 1.2rem 2.5rem;
+            border: 2px solid var(--accent-cyan);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            font-family: 'Cairo', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 217, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+        }
+
+        /* ==================== SECTION GENERAL ==================== */
+        section {
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-electric) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* ==================== PROBLEM SECTION ==================== */
+        .problem-section {
+            background: rgba(10, 25, 47, 0.5);
+            backdrop-filter: blur(10px);
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.1), inset 0 0 30px rgba(0, 217, 255, 0.05);
+        }
+
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: rgba(26, 77, 122, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.1), inset 0 0 20px rgba(0, 217, 255, 0.05);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.3), inset 0 0 20px rgba(0, 217, 255, 0.1);
+            border-color: rgba(0, 217, 255, 0.6);
+        }
+
+        .problem-card h3 {
+            background: linear-gradient(135deg, #ff6b6b, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .problem-card p {
+            color: var(--text-gray);
+        }
+
+        /* ==================== SOLUTION SECTION ==================== */
+        .solution-section {
+            background: transparent;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .solution-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .solution-content h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-electric) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-content ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .solution-content li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.05rem;
+            color: var(--text-light);
+        }
+
+        .solution-content li::before {
+            content: "✓";
+            color: var(--accent-electric);
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px var(--glow-cyan);
+        }
+
+        .solution-image {
+            text-align: center;
+            perspective: 1000px;
+        }
+
+        .solution-image-box {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.3) 0%, rgba(0, 217, 255, 0.2) 100%);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.3), inset 0 0 30px rgba(0, 217, 255, 0.1);
+            transform: rotateX(5deg) rotateY(-5deg);
+            transition: all 0.3s;
+        }
+
+        .solution-image-box:hover {
+            box-shadow: 0 0 60px rgba(0, 217, 255, 0.5), inset 0 0 30px rgba(0, 217, 255, 0.2);
+        }
+
+        /* ==================== CURRICULUM SECTION ==================== */
+        .curriculum-section {
+            background: transparent;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .curriculum-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .curriculum-item {
+            background: rgba(26, 77, 122, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.1);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .curriculum-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.3);
+            border-color: rgba(0, 217, 255, 0.6);
+        }
+
+        .curriculum-item h4 {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-electric));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .curriculum-item p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .lesson-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-royal), var(--accent-cyan));
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+        }
+
+        /* ==================== FREE VIDEOS SECTION ==================== */
+        .free-videos-section {
+            background: transparent;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .videos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .video-card {
+            background: rgba(74, 144, 226, 0.15);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.2), inset 0 0 20px rgba(0, 217, 255, 0.05);
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 50px rgba(0, 217, 255, 0.4), inset 0 0 20px rgba(0, 217, 255, 0.1);
+        }
+
+        .video-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .expand-btn {
+            background: rgba(0, 217, 255, 0.2);
+            border: 1px solid rgba(0, 217, 255, 0.4);
+            color: var(--accent-cyan);
+            cursor: pointer;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .expand-btn:hover {
+            background: rgba(0, 217, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+        }
+
+        .video-content {
+            display: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .video-content.active {
+            display: block;
+            max-height: 500px;
+        }
+
+        .video-frame {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            margin-top: 1rem;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+        }
+
+        /* ==================== ABOUT SECTION (NEW) ==================== */
+        .about-section {
+            background: rgba(10, 25, 47, 0.4);
+            backdrop-filter: blur(10px);
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            padding: 4rem 2rem;
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.15);
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+            perspective: 1000px;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 0 60px rgba(0, 217, 255, 0.4), 
+                        0 0 100px rgba(74, 144, 226, 0.2);
+            border: 2px solid rgba(0, 217, 255, 0.4);
+            transition: all 0.3s;
+            transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+            filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.3));
+        }
+
+        .about-image img:hover {
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            box-shadow: 0 0 80px rgba(0, 217, 255, 0.6), 
+                        0 0 120px rgba(74, 144, 226, 0.3);
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-electric) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            line-height: 2;
+            margin-bottom: 1.2rem;
+            color: var(--text-gray);
+        }
+
+        .about-highlight {
+            color: var(--accent-cyan);
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+        }
+
+        /* ==================== COUNTDOWN SECTION ==================== */
+        .countdown-section {
+            background: rgba(74, 144, 226, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .countdown-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-cyan), #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(26, 77, 122, 0.4);
+            padding: 1.5rem;
+            border-radius: 10px;
+            min-width: 100px;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px var(--glow-blue);
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            color: var(--text-gray);
+        }
+
+        /* ==================== TESTIMONIALS SECTION ==================== */
+        .testimonials-section {
+            background: transparent;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 600px;
+            margin: 2rem auto;
+            background: rgba(26, 77, 122, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.2);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial {
+            display: none;
+            text-align: center;
+        }
+
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+        }
+
+        .testimonial-role {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .slideshow-arrows {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .arrow-btn {
+            background: linear-gradient(135deg, var(--primary-royal), var(--accent-cyan));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+        }
+
+        .arrow-btn:hover {
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* ==================== PRICING SECTION ==================== */
+        .pricing-section {
+            background: transparent;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: rgba(74, 144, 226, 0.15);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 0 60px rgba(0, 217, 255, 0.3);
+            text-align: center;
+            max-width: 500px;
+            margin: 2rem auto;
+            border: 2px solid rgba(0, 217, 255, 0.4);
+            backdrop-filter: blur(15px);
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            box-shadow: 0 0 80px rgba(0, 217, 255, 0.5);
+            border-color: rgba(0, 217, 255, 0.6);
+            transform: translateY(-10px);
+        }
+
+        .original-price {
+            font-size: 1.3rem;
+            text-decoration: line-through;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+            color: var(--text-gray);
+        }
+
+        .discount-price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-electric));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+        }
+
+        .discount-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .offer-info {
+            margin: 2rem 0;
+            background: rgba(0, 217, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            line-height: 1.8;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            color: var(--text-light);
+        }
+
+        .payment-methods {
+            margin: 2rem 0;
+        }
+
+        .payment-methods h4 {
+            margin-bottom: 1rem;
+            color: var(--accent-cyan);
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .payment-icon {
+            background: rgba(0, 217, 255, 0.15);
+            padding: 0.8rem;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            transition: all 0.3s;
+            color: var(--accent-cyan);
+        }
+
+        .payment-icon:hover {
+            background: rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: rgba(2, 6, 23, 0.8);
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+            color: var(--text-gray);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.1);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.8rem 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .solution-container,
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .curriculum-list {
+                grid-template-columns: 1fr;
+            }
+
+            .countdown-timer {
+                gap: 1rem;
+            }
+
+            .countdown-item {
+                min-width: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ==================== NAVBAR ==================== -->
+    <nav>
+        <div class="logo">📊 XRDE Academy</div>
+        <ul class="nav-links">
+            <li><a href="#curriculum">المحتوى</a></li>
+            <li><a href="#free-videos">فيديوهات مجانية</a></li>
+            <li><a href="#about">عن أميرة</a></li>
+            <li><a href="#testimonials">آراء المتدربين</a></li>
+        </ul>
+        <button class="btn-nav" onclick="document.getElementById('pricing-section').scrollIntoView({behavior: 'smooth'})">اشترك الآن</button>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero">
+        <h1>
+            بياناتك كتير.. بس مش عارف تطلع منها <span class="highlight">"قرار"</span>؟
+        </h1>
+        <p>
+            تعلم كيفية تحويل البيانات الخام إلى استراتيجيات تسويقية قوية وتضاعف أرباح شركتك باستخدام نموذج RFM والـ Data Storytelling
+        </p>
+        <div class="cta-buttons">
+            <button class="btn-primary" onclick="document.getElementById('pricing-section').scrollIntoView({behavior: 'smooth'})">
+                اشترك الآن - 390 جنيه فقط
+            </button>
+            <a href="#free-videos" class="btn-secondary">اشاهد الفيديوهات المجانية</a>
+        </div>
+    </section>
+
+    <!-- ==================== PROBLEM SECTION ==================== -->
+    <section class="problem-section">
+        <h2 class="section-title">🔴 المشكلة الحقيقية</h2>
+        <p class="section-subtitle">لو أنت مسوق، محلل بيانات مبتدئ، أو صاحب شركة - أكيد واجهت المشاكل دي</p>
+        
+        <div class="problem-cards">
+            <div class="problem-card">
+                <h3>❌ أرقام بدون قصة</h3>
+                <p>عندك تقارير كتير بس مش قادر تترجمها لخطوات عملية تزود المبيعات</p>
+            </div>
+            <div class="problem-card">
+                <h3>❌ ضياع العملاء</h3>
+                <p>مش عارف مين أهم عملائك اللي لازم تركز معاهم، ومين العملاء اللي قربوا يضيعوا</p>
+            </div>
+            <div class="problem-card">
+                <h3>❌ وقت مهدر</h3>
+                <p>بتقضي ساعات في التحليل والنتيجة "جداول صامتة" مفيش فيها قصة واضحة</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SOLUTION SECTION ==================== -->
+    <section class="solution-section">
+        <h2 class="section-title">✅ الحل الكامل</h2>
+        
+        <div class="solution-container">
+            <div class="solution-content">
+                <h2>حوّل البيانات الجامدة لنتائج حية تضاعف أرباحك!</h2>
+                <p>في الكورس ده، مش بس بنعلمك أدوات، احنا بنعلمك <strong>منهجية تحليل السلوك الشرائي للعملاء</strong>.</p>
+                
+                <ul>
+                    <li><strong>فهم البيزنس أولاً:</strong> شرح كامل لنموذج RFM</li>
+                    <li><strong>استكشاف البيانات:</strong> 3 مستويات من الـ EDA</li>
+                    <li><strong>تطبيق عملي:</strong> 5 أجزاء لتقسيم العملاء باحترافية</li>
+                    <li><strong>فن السرد:</strong> 3 أجزاء لتحويل الأرقام لقصص مقنعة</li>
+                    <li><strong>أدوات قوية:</strong> Excel | Python | Power BI</li>
+                </ul>
+            </div>
+            <div class="solution-image">
+                <div class="solution-image-box">
+                    📈 📊 💡
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CURRICULUM SECTION ==================== -->
+    <section class="curriculum-section" id="curriculum">
+        <h2 class="section-title">📚 محتوى الكورس (13 درس)</h2>
+        <p class="section-subtitle">رحلة تعليمية مكثفة من النظرية للتطبيق الاحترافي</p>
+        
+        <div class="curriculum-list">
+            <div class="curriculum-item">
+                <div class="lesson-number">1</div>
+                <h4>شرح نظري لمفهوم RFM</h4>
+                <p>فهم العميق لما هو RFM وليه تقنية قوية جداً للتحليل</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">2</div>
+                <h4>Business Understanding & Problem Solving</h4>
+                <p>فهم طبيعة المشاكل وكيفية حلها باحترافية</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">3</div>
+                <h4>EDA Part 1 - المستوى الأول</h4>
+                <p>استكشاف البيانات والبدء في فهم الأنماط</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">4</div>
+                <h4>EDA Part 2 - المستوى الثاني</h4>
+                <p>تحليل متقدم للعلاقات والارتباطات</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">5</div>
+                <h4>EDA Part 3 - المستوى الثالث</h4>
+                <p>اكتشاف الرؤى المخفية والشذوذ</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">6</div>
+                <h4>Applying RFM Part 1</h4>
+                <p>البدء في تطبيق نموذج RFM على البيانات</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">7</div>
+                <h4>Applying RFM Part 2</h4>
+                <p>حساب معايير RFM بدقة</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">8</div>
+                <h4>Applying RFM Part 3</h4>
+                <p>تقسيم العملاء إلى شرائح</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">9</div>
+                <h4>Applying RFM Part 4</h4>
+                <p>تحليل الشرائح والاستراتيجيات</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">10</div>
+                <h4>Applying RFM Part 5</h4>
+                <p>بناء الخطط التسويقية المستهدفة</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">11</div>
+                <h4>Data Storytelling Part 1</h4>
+                <p>أساسيات سرد البيانات والإقناع</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">12</div>
+                <h4>Data Storytelling Part 2</h4>
+                <p>بناء السرد البصري المؤثر</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">13</div>
+                <h4>Data Storytelling Part 3</h4>
+                <p>تقديم النتائج للمديرين والعملاء بقوة</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FREE VIDEOS SECTION ==================== -->
+    <section class="free-videos-section" id="free-videos">
+        <h2 class="section-title">🎬 فيديوهات مجانية</h2>
+        <p class="section-subtitle">اشاهد أول فيديوين من الكورس مجاناً لتعرف مستوى الجودة</p>
+        
+        <div class="videos-container">
+            <div class="video-card">
+                <div class="video-header">
+                    <span class="video-title">الدرس الأول - شرح RFM</span>
+                    <button class="expand-btn" onclick="toggleVideo(0)">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="video-content" id="video-0">
+                    <p style="margin-bottom: 1rem; color: var(--text-gray);">شرح نظري شامل لمفهوم RFM وأهميته في التحليل</p>
+                    <iframe class="video-frame" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-header">
+                    <span class="video-title">الدرس الثاني - Business Understanding</span>
+                    <button class="expand-btn" onclick="toggleVideo(1)">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="video-content" id="video-1">
+                    <p style="margin-bottom: 1rem; color: var(--text-gray);">فهم المشاكل البيزنس وكيفية حلها باستخدام البيانات</p>
+                    <iframe class="video-frame" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION (NEW) ==================== -->
+    <section class="about-section" id="about">
+        <h2 class="section-title">👋 مرحباً، أنا أميرة عبد السلام</h2>
+        
+        <div class="about-container">
+            <div class="about-image">
+                <img src="amira-profile.png" alt="أميرة عبد السلام - مؤسسة XRDE Hub">
+            </div>
+            <div class="about-content">
+                <h2>رحلتي في عالم البيانات</h2>
+                <p>
+                    أنا <span class="about-highlight">أميرة عبد السلام</span>، ومهمتي هي تبسيط عالم البيانات للمبتدئين. كخريجة نظم معلومات وباحثة ماجستير، خلال خبرتي في المجال العملي في الشركات كـ <span class="about-highlight">Sr Data Analyst</span>
+                </p>
+                <p>
+                    لاحظت الفجوة الكبيرة بين <span class="about-highlight">التعلم الأكاديمي واحتياجات سوق العمل</span> الحقيقية. الشركات لا تريد محللي بيانات يعرفون الأدوات فقط، بل تريد محللين يفهمون الأعمال ويترجمون البيانات لقرارات قابلة للتنفيذ.
+                </p>
+                <p>
+                    لذا أطلقت منصة <span class="about-highlight">XRDE Hub</span> لتقديم "حقائب مشاريع" عملية تحاكي الواقع بنسبة 100%. كل مشروع يحتوي على الكود الحقيقي، البيانات الحقيقية، والتحديات الحقيقية التي تواجهك في العمل.
+                </p>
+                <p>
+                    أؤمن أن <span class="about-highlight">"قراءة البيانات بسهولة"</span> هي المهارة الأهم في وقتنا الحالي. وأنا هنا لأعلمك هذه المهارة بطريقة عملية وملهمة.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COUNTDOWN SECTION ==================== -->
+    <section class="countdown-section">
+        <h2>⏰ العرض ينتهي في:</h2>
+        <div class="countdown-timer">
+            <div class="countdown-item">
+                <span class="countdown-value" id="days">15</span>
+                <span class="countdown-label">يوم</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="hours">12</span>
+                <span class="countdown-label">ساعة</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="minutes">34</span>
+                <span class="countdown-label">دقيقة</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="seconds">56</span>
+                <span class="countdown-label">ثانية</span>
+            </div>
+        </div>
+        <p><strong>الخصم ساري لأول 50 مشترك فقط!</strong></p>
+    </section>
+
+    <!-- ==================== TESTIMONIALS SECTION ==================== -->
+    <section class="testimonials-section" id="testimonials">
+        <h2 class="section-title">💬 آراء المتدربين</h2>
+        
+        <div class="slideshow-container">
+            <div class="testimonial active">
+                <p class="testimonial-text">
+                    "الكورس فرق معايا جداً في ترتيب أولويات التسويق، بقيت عارف أوجه الميزانية لمين بالظبط. النتائج كانت أفضل من توقعاتي!"
+                </p>
+                <div class="testimonial-author">أحمد محمود</div>
+                <div class="testimonial-role">مسوق رقمي - شركة تكنولوجيا</div>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">
+                    "الشرح واضح جداً وسهل المتابعة، والتطبيق العملي كان ممتاز. استخدمت الطريقة مع عملاء الشركة وشفت نتايج ملموسة في أسبوع!"
+                </p>
+                <div class="testimonial-author">فاطمة حسن</div>
+                <div class="testimonial-role">محللة بيانات - شركة عقارات</div>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">
+                    "أفضل استثمار في تطوري المهني. الكورس ساعدني أفهم أهمية البيانات والسرد البصري. بقيت أقدر أقدم تقارير تؤثر فعلاً!"
+                </p>
+                <div class="testimonial-author">محمد علي</div>
+                <div class="testimonial-role">مسؤول تسويق - متجر إلكتروني</div>
+            </div>
+            
+            <div class="slideshow-arrows">
+                <button class="arrow-btn" onclick="previousTestimonial()">← السابق</button>
+                <button class="arrow-btn" onclick="nextTestimonial()">التالي →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PRICING SECTION ==================== -->
+    <section class="pricing-section" id="pricing-section">
+        <h2 class="section-title">💰 الأسعار والعرض</h2>
+        
+        <div class="pricing-card">
+            <div class="original-price">600 جنيه مصري</div>
+            <div class="discount-price">390 ج.م</div>
+            <div class="discount-badge">خصم 35% - عرض محدود!</div>
+            
+            <div class="offer-info">
+                <p><strong>⚠️ تنبيه مهم:</strong></p>
+                <p>الخصم ساري <strong>لأول 50 مشترك فقط</strong></p>
+                <p>العرض ينتهي في <strong>1 مايو 2026</strong></p>
+            </div>
+
+            <button class="btn-primary" style="width: 100%; margin: 1.5rem 0; padding: 1.2rem;">
+                اشترك الآن بـ 390 جنيه فقط ✅
+            </button>
+
+            <div class="payment-methods">
+                <h4>طرق الدفع المتاحة:</h4>
+                <div class="payment-icons">
+                    <div class="payment-icon" title="Vodafone Cash">
+                        <i class="fas fa-mobile"></i><br><small>Vodafone Cash</small>
+                    </div>
+                    <div class="payment-icon" title="Fawry Pay">
+                        <i class="fas fa-credit-card"></i><br><small>Fawry</small>
+                    </div>
+                    <div class="payment-icon" title="InstaPay">
+                        <i class="fas fa-university"></i><br><small>InstaPay</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <p>&copy; 2024 XRDE Academy - كورس RFM Analysis والـ Data Storytelling</p>
+        <p>من بطاقة أميرة عبد السلام | جميع الحقوق محفوظة | صُنع بـ ❤️ لتمكين محللي البيانات في الوطن العربي</p>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const countdownDate = new Date("May 1, 2026").getTime();
+            
+            const countdown = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById("days").textContent = days;
+                document.getElementById("hours").textContent = hours;
+                document.getElementById("minutes").textContent = minutes;
+                document.getElementById("seconds").textContent = seconds;
+                
+                if (distance < 0) {
+                    clearInterval(countdown);
+                    document.querySelector('.countdown-section').innerHTML = '<h2>انتهى العرض!</h2>';
+                }
+            }, 1000);
+        }
+
+        // Toggle Videos
+        function toggleVideo(index) {
+            const video = document.getElementById(`video-${index}`);
+            video.classList.toggle('active');
+        }
+
+        // Testimonials Slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+
+        function showTestimonial(index) {
+            testimonials.forEach(t => t.classList.remove('active'));
+            testimonials[index].classList.add('active');
+        }
+
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+
+        function previousTestimonial() {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+
+        // Initialize
+        updateCountdown();
+        
+        // Auto-rotate testimonials every 5 seconds
+        setInterval(nextTestimonial, 5000);
+    </script>
+</body>
+</html>
