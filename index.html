@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XRDE Hub - منصة تحليل البيانات العملية</title>
+    <title>كورس RFM Analysis - حول بياناتك لأرباح | XRDE Hub</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -14,14 +14,17 @@
         }
 
         :root {
-            --primary: #5B4B9D;
-            --primary-light: #7B68A6;
-            --accent: #FF8C42;
-            --dark: #1A1A2E;
-            --light: #F8F9FA;
-            --success: #2ECC71;
-            --text: #2C3E50;
-            --text-light: #7F8C8D;
+            --primary-dark: #020617;
+            --primary-navy: #0a192f;
+            --primary-blue: #1a4d7a;
+            --primary-royal: #4a90e2;
+            --accent-cyan: #00d9ff;
+            --accent-electric: #00ffcc;
+            --text-light: #e0f7ff;
+            --text-white: #ffffff;
+            --text-gray: #b0c4de;
+            --glow-blue: rgba(0, 217, 255, 0.3);
+            --glow-cyan: rgba(0, 255, 204, 0.2);
         }
 
         html {
@@ -30,69 +33,65 @@
 
         body {
             font-family: 'Cairo', 'Poppins', sans-serif;
-            color: var(--text);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-navy) 100%);
+            background-attachment: fixed;
+            color: var(--text-light);
             line-height: 1.6;
-            padding-top: 60px;
+            position: relative;
+        }
+
+        /* Radial Gradient Background Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -20%;
+            left: -5%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
         }
 
         /* ==================== NAVBAR ==================== */
-       /* nav {
-            background: white;
-            padding: 0rem ;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 25, 47, 0.8);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }*/
-
-            nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    z-index: 1000;
-
-    background: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 0 2rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-                }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+            padding: 1rem 2rem;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
         }
-        /*
-        .logo-img {
-            height: 50px;
-            width: auto;
-            object-fit: contain;
-        }*/
-        .logo-img {
-           /* height: 50px;      /* الارتفاع الثابت */ 
-            width: auto;         /* العرض يتكيف تلقائياً */
-            max-width: 200px;    /* حد أقصى للعرض */
-            display: block;
-            object-fit: contain; /* الحفاظ على نسب الصورة */
-            transition: transform 0.3s ease;
-            height: 150px;
-  
-        }
-/*
-        .brand-name {
+
+        .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-electric) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-*/
+
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -101,33 +100,19 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text);
+            color: var(--text-gray);
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s;
             position: relative;
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px var(--glow-blue);
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .btn-cta {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+        .btn-nav {
+            background: linear-gradient(135deg, var(--primary-royal) 0%, var(--accent-cyan) 100%);
             color: white;
             padding: 0.75rem 1.5rem;
             border: none;
@@ -135,303 +120,397 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
-            text-decoration: none;
-            font-family: 'Cairo', sans-serif;
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
         }
 
-        .btn-cta:hover {
+        .btn-nav:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(91, 75, 157, 0.3);
+            box-shadow: 0 0 25px rgba(0, 217, 255, 0.6);
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
         }
 
         /* ==================== HERO SECTION ==================== */
         .hero {
-            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
-            padding: 4rem 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            min-height: 90vh;
+            position: relative;
+            z-index: 1;
         }
 
-        .hero-content h1 {
-            font-size: 2.8rem;
-            color: var(--primary);
+        .hero h1 {
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
             line-height: 1.3;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--accent-cyan) 50%, var(--accent-electric) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
             font-weight: 700;
         }
 
-        .hero-content h1 .highlight {
-            color: var(--accent);
-            font-style: italic;
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            color: var(--text-light);
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
             margin-bottom: 2rem;
+            color: var(--text-gray);
             line-height: 1.8;
         }
 
-        .hero-buttons {
+        .cta-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            background: linear-gradient(135deg, var(--primary-royal) 0%, var(--accent-cyan) 100%);
             color: white;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             border: none;
             border-radius: 30px;
             cursor: pointer;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: all 0.3s;
             font-family: 'Cairo', sans-serif;
-            display: inline-block;
             text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+            border: 1px solid rgba(0, 217, 255, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(91, 75, 157, 0.4);
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.8);
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
         }
 
         .btn-secondary {
-            background: white;
-            color: var(--primary);
-            padding: 1rem 2rem;
-            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--accent-cyan);
+            padding: 1.2rem 2.5rem;
+            border: 2px solid var(--accent-cyan);
             border-radius: 30px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 1rem;
+            font-weight: 700;
+            font-size: 1.1rem;
             transition: all 0.3s;
             font-family: 'Cairo', sans-serif;
-            display: inline-block;
             text-decoration: none;
+            display: inline-block;
         }
 
         .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
+            background: rgba(0, 217, 255, 0.1);
             transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
         }
 
-        .hero-image {
-            text-align: center;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            filter: drop-shadow(0 20px 40px rgba(91, 75, 157, 0.2));
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* ==================== VISION SECTION ==================== */
-        .vision-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
+        /* ==================== SECTION GENERAL ==================== */
+        section {
             padding: 4rem 2rem;
-            text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
             font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-electric) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
         }
 
-        .vision-content {
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            line-height: 1.9;
-            opacity: 0.95;
-        }
-
-        /* ==================== WHY SECTION ==================== */
-        .why-section {
-            padding: 4rem 2rem;
-            background: white;
-        }
-
-        .why-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .why-card {
-            background: linear-gradient(135deg, #F8F9FA 0%, white 100%);
-            padding: 2rem;
-            border-radius: 15px;
-            border-right: 4px solid var(--accent);
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .why-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(91, 75, 157, 0.15);
-        }
-
-        .why-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .why-card p {
-            color: var(--text-light);
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
             line-height: 1.8;
         }
 
-        /* ==================== PROJECTS SECTION ==================== */
-        .projects-section {
-            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
-            padding: 4rem 2rem;
-        }
-
-        .projects-container {
+        /* ==================== PROBLEM SECTION ==================== */
+        .problem-section {
+            background: rgba(10, 25, 47, 0.5);
+            backdrop-filter: blur(10px);
             max-width: 1200px;
             margin: 0 auto;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.1), inset 0 0 30px rgba(0, 217, 255, 0.05);
         }
 
-        .projects-grid {
+        .problem-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .project-card {
-            background: white;
+        .problem-card {
+            background: rgba(26, 77, 122, 0.2);
+            padding: 2rem;
             border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.1), inset 0 0 20px rgba(0, 217, 255, 0.05);
             transition: all 0.3s;
-            position: relative;
+            backdrop-filter: blur(10px);
         }
 
-        .project-card.soon {
-            opacity: 0.75;
-        } 
-
-        .ribbon {
-            position: absolute;
-            top: 8px;
-            right: -35px;
-
-            background: linear-gradient(135deg, #dc2121, #ec0909);
-            color: white;
-
-            padding: 6px 45px;
-            font-size: 17px;
-            font-weight: bold;
-            font-family: Arial, Helvetica, sans-serif;
-            transform: rotate(45deg);
-            z-index: 2;
-
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.3), inset 0 0 20px rgba(0, 217, 255, 0.1);
+            border-color: rgba(0, 217, 255, 0.6);
         }
 
-        .ribbon.pro1 {
-            position: absolute;
-            top: 8px;
-            right: -45px;
-
-            background: linear-gradient(135deg, #13cc5a, #6af03d);
-            color: white;
-
-            padding: 6px 45px;
-            font-size: 17px;
-            font-weight: bold;
-            font-family: Arial, Helvetica, sans-serif;
-            transform: rotate(45deg);
-            z-index: 2;
-
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        .problem-card h3 {
+            background: linear-gradient(135deg, #ff6b6b, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
         }
 
-        .project-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 50px rgba(91, 75, 157, 0.2);
+        .problem-card p {
+            color: var(--text-gray);
         }
 
-        .project-header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            padding: 2rem;
-            text-align: center;
+        /* ==================== SOLUTION SECTION ==================== */
+        .solution-section {
+            background: transparent;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .project-number {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+        .solution-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
         }
 
-        .project-name {
-            font-size: 18px;
-            font-weight: 700;
+        .solution-content h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-electric) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
         }
 
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-features {
+        .solution-content ul {
             list-style: none;
             margin: 1.5rem 0;
         }
 
-        .project-features li {
+        .solution-content li {
             padding: 0.8rem 0;
-            border-bottom: 1px solid #EEE;
-            color: var(--text-light);
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 1rem;
+            font-size: 1.05rem;
+            color: var(--text-light);
         }
 
-        .project-features li:last-child {
-            border-bottom: none;
-        }
-
-        .project-features li::before {
+        .solution-content li::before {
             content: "✓";
-            color: var(--success);
+            color: var(--accent-electric);
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px var(--glow-cyan);
         }
 
-        /* ==================== ABOUT SECTION ==================== */
-        .about-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+        .solution-image {
+            text-align: center;
+            perspective: 1000px;
+        }
+
+        .solution-image-box {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.3) 0%, rgba(0, 217, 255, 0.2) 100%);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.3), inset 0 0 30px rgba(0, 217, 255, 0.1);
+            transform: rotateX(5deg) rotateY(-5deg);
+            transition: all 0.3s;
+        }
+
+        .solution-image-box:hover {
+            box-shadow: 0 0 60px rgba(0, 217, 255, 0.5), inset 0 0 30px rgba(0, 217, 255, 0.2);
+        }
+
+        /* ==================== CURRICULUM SECTION ==================== */
+        .curriculum-section {
+            background: transparent;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .curriculum-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .curriculum-item {
+            background: rgba(26, 77, 122, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.1);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .curriculum-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.3);
+            border-color: rgba(0, 217, 255, 0.6);
+        }
+
+        .curriculum-item h4 {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-electric));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .curriculum-item p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .lesson-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-royal), var(--accent-cyan));
             color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+        }
+
+        /* ==================== FREE VIDEOS SECTION ==================== */
+        .free-videos-section {
+            background: transparent;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .videos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .video-card {
+            background: rgba(74, 144, 226, 0.15);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.2), inset 0 0 20px rgba(0, 217, 255, 0.05);
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 50px rgba(0, 217, 255, 0.4), inset 0 0 20px rgba(0, 217, 255, 0.1);
+        }
+
+        .video-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .expand-btn {
+            background: rgba(0, 217, 255, 0.2);
+            border: 1px solid rgba(0, 217, 255, 0.4);
+            color: var(--accent-cyan);
+            cursor: pointer;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .expand-btn:hover {
+            background: rgba(0, 217, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+        }
+
+        .video-content {
+            display: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .video-content.active {
+            display: block;
+            max-height: 500px;
+        }
+
+        .video-frame {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            margin-top: 1rem;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+        }
+
+        /* ==================== ABOUT SECTION (NEW) ==================== */
+        .about-section {
+            background: rgba(10, 25, 47, 0.4);
+            backdrop-filter: blur(10px);
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.3);
             padding: 4rem 2rem;
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.15);
         }
 
         .about-container {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
@@ -440,433 +519,708 @@
 
         .about-image {
             text-align: center;
+            perspective: 1000px;
         }
 
         .about-image img {
             max-width: 100%;
             height: auto;
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));
-            border-radius: 15px;
+            border-radius: 20px;
+            box-shadow: 0 0 60px rgba(0, 217, 255, 0.4), 
+                        0 0 100px rgba(74, 144, 226, 0.2);
+            border: 2px solid rgba(0, 217, 255, 0.4);
+            transition: all 0.3s;
+            transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+            filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.3));
+        }
+
+        .about-image img:hover {
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            box-shadow: 0 0 80px rgba(0, 217, 255, 0.6), 
+                        0 0 120px rgba(74, 144, 226, 0.3);
         }
 
         .about-content h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-electric) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1.5rem;
-            font-weight: 700;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
         }
 
         .about-content p {
             font-size: 1.05rem;
-            line-height: 1.9;
-            margin-bottom: 1rem;
-            opacity: 0.95;
+            line-height: 2;
+            margin-bottom: 1.2rem;
+            color: var(--text-gray);
         }
 
-        /* ==================== CTA SECTION ==================== */
-        .cta-section {
-            background: linear-gradient(135deg, var(--accent) 0%, #FF6B1A 100%);
+        .about-highlight {
+            color: var(--accent-cyan);
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+        }
+
+        /* ==================== COUNTDOWN SECTION ==================== */
+        .countdown-section {
+            background: rgba(74, 144, 226, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 15px;
             color: white;
-            padding: 4rem 2rem;
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .countdown-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-cyan), #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(26, 77, 122, 0.4);
+            padding: 1.5rem;
+            border-radius: 10px;
+            min-width: 100px;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px var(--glow-blue);
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            color: var(--text-gray);
+        }
+
+        /* ==================== TESTIMONIALS SECTION ==================== */
+        .testimonials-section {
+            background: transparent;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 600px;
+            margin: 2rem auto;
+            background: rgba(26, 77, 122, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.2);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial {
+            display: none;
             text-align: center;
         }
 
-        .cta-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.5s;
         }
 
-        .cta-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .btn-whatsapp {
-            background: white;
-            color: var(--accent);
-            padding: 1.2rem 3rem;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 700;
+        .testimonial-text {
             font-size: 1.1rem;
-            transition: all 0.3s;
-            font-family: 'Cairo', sans-serif;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
         }
 
-        .btn-whatsapp:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+        }
+
+        .testimonial-role {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .slideshow-arrows {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .arrow-btn {
+            background: linear-gradient(135deg, var(--primary-royal), var(--accent-cyan));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+        }
+
+        .arrow-btn:hover {
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* ==================== PRICING SECTION ==================== */
+        .pricing-section {
+            background: transparent;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: rgba(74, 144, 226, 0.15);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 0 60px rgba(0, 217, 255, 0.3);
+            text-align: center;
+            max-width: 500px;
+            margin: 2rem auto;
+            border: 2px solid rgba(0, 217, 255, 0.4);
+            backdrop-filter: blur(15px);
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            box-shadow: 0 0 80px rgba(0, 217, 255, 0.5);
+            border-color: rgba(0, 217, 255, 0.6);
+            transform: translateY(-10px);
+        }
+
+        .original-price {
+            font-size: 1.3rem;
+            text-decoration: line-through;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+            color: var(--text-gray);
+        }
+
+        .discount-price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-electric));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+        }
+
+        .discount-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .offer-info {
+            margin: 2rem 0;
+            background: rgba(0, 217, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            line-height: 1.8;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            color: var(--text-light);
+        }
+
+        .payment-methods {
+            margin: 2rem 0;
+        }
+
+        .payment-methods h4 {
+            margin-bottom: 1rem;
+            color: var(--accent-cyan);
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .payment-icon {
+            background: rgba(0, 217, 255, 0.15);
+            padding: 0.8rem;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            transition: all 0.3s;
+            color: var(--accent-cyan);
+        }
+
+        .payment-icon:hover {
+            background: rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
         }
 
         /* ==================== FOOTER ==================== */
         footer {
-            background: var(--dark);
-            color: white;
+            background: rgba(2, 6, 23, 0.8);
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+            color: var(--text-gray);
             padding: 2rem;
             text-align: center;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.1);
         }
 
-        /* ==================== HAMBURGER MENU ==================== */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-            padding: 0.5rem;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background-color: var(--primary);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(10px, 10px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
+        footer p {
+            margin: 0.5rem 0;
         }
 
         /* ==================== RESPONSIVE ==================== */
         @media (max-width: 768px) {
             nav {
                 padding: 0.8rem 1rem;
-                min-height: 60px;
-            }
-
-            .logo-img {
-                height: 150px;
-            }
-
-            .hamburger {
-                display: flex;
             }
 
             .nav-links {
-                position: absolute;
-                top: 60px;
-                right: 0;
-                left: 0;
-                flex-direction: column;
-                gap: 0;
-                background: white;
-                list-style: none;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-                z-index: 999;
-            }
-
-            .nav-links.active {
-                max-height: 300px;
-            }
-
-            .nav-links li {
-                border-bottom: 1px solid #EEE;
-                padding: 1rem 2rem;
-            }
-
-            .nav-links li:last-child {
-                border-bottom: none;
-            }
-
-            .nav-links a {
-                display: block;
-            }
-
-            .nav-links a::after {
                 display: none;
             }
 
-            .btn-cta {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
+            .hero h1 {
+                font-size: 2rem;
             }
 
-            .hero {
-                grid-template-columns: 1fr;
-                padding: 2rem 1rem;
+            .hero p {
+                font-size: 1rem;
             }
 
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-
-            .vision-section, .projects-section, .about-section, .cta-section {
-                padding: 2rem 1rem;
-            }
-
-            .about-container {
-                grid-template-columns: 1fr;
-            }
-
-            .why-grid, .projects-grid {
-                grid-template-columns: 1fr;
+            .cta-buttons {
+                flex-direction: column;
             }
 
             .btn-primary, .btn-secondary {
                 width: 100%;
-                text-align: center;
             }
-        }
 
-        /* ==================== ANIMATIONS ==================== */
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+            .section-title {
+                font-size: 2rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            .solution-container,
+            .about-container {
+                grid-template-columns: 1fr;
             }
-        }
 
-        .hero-content {
-            animation: slideInUp 0.8s ease-out;
-        }
+            .curriculum-list {
+                grid-template-columns: 1fr;
+            }
 
-        .hero-image {
-            animation: slideInUp 0.8s ease-out 0.2s both;
+            .countdown-timer {
+                gap: 1rem;
+            }
+
+            .countdown-item {
+                min-width: 80px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- ==================== NAVBAR ==================== -->
     <nav>
-        <div class="logo-container">
-            <img src="v1.png" alt="XRDE Logo" class="logo-img">
-        </div>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#vision">الرؤية</a></li>
-            <li><a href="#why">لماذا معنا</a></li>
-            <li><a href="#projects">المشاريع</a></li>
-            <li><a href="#about">عنا</a></li>
+        <div class="logo">📊 XRDE Academy</div>
+        <ul class="nav-links">
+            <li><a href="#curriculum">المحتوى</a></li>
+            <li><a href="#free-videos">فيديوهات مجانية</a></li>
+            <li><a href="#about">عن أميرة</a></li>
+            <li><a href="#testimonials">آراء المتدربين</a></li>
         </ul>
-        <div style="display: flex; gap: 1rem; align-items: center;">
-            <a href="https://wa.me/201234567890" class="btn-cta">تواصل معنا</a>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+        <button class="btn-nav" onclick="document.getElementById('pricing-section').scrollIntoView({behavior: 'smooth'})">اشترك الآن</button>
     </nav>
 
     <!-- ==================== HERO SECTION ==================== -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>
-                توقف عن <span class="highlight">"الخوف"</span> من البيانات.. وابدأ في <span class="highlight">"بناء"</span> مشاريع حقيقية
-            </h1>
-            <p>
-                في <strong>XRDE Hub</strong>، ننقل مهاراتك من مجرد "أكواد صماء" إلى <strong>حقائب مشاريع بيزنس متكاملة</strong> تحاكي واقع الشركات في مصر والوطن العربي. لا مزيد من البيانات الوهمية، حان الوقت لبناء بورتفوليو يتحدث بلغة الأرقام والنتائج.
-            </p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn-primary">اكتشف المشاريع</a>
-                <a href="https://wa.me/201557361769" class="btn-secondary">تواصل عبر واتساب</a>
+        <h1>
+            بياناتك كتير.. بس مش عارف تطلع منها <span class="highlight">"قرار"</span>؟
+        </h1>
+        <p>
+            تعلم كيفية تحويل البيانات الخام إلى استراتيجيات تسويقية قوية وتضاعف أرباح شركتك باستخدام نموذج RFM والـ Data Storytelling
+        </p>
+        <div class="cta-buttons">
+            <button class="btn-primary" onclick="document.getElementById('pricing-section').scrollIntoView({behavior: 'smooth'})">
+                اشترك الآن - 390 جنيه فقط
+            </button>
+            <a href="#free-videos" class="btn-secondary">اشاهد الفيديوهات المجانية</a>
+        </div>
+    </section>
+
+    <!-- ==================== PROBLEM SECTION ==================== -->
+    <section class="problem-section">
+        <h2 class="section-title">🔴 المشكلة الحقيقية</h2>
+        <p class="section-subtitle">لو أنت مسوق، محلل بيانات مبتدئ، أو صاحب شركة - أكيد واجهت المشاكل دي</p>
+        
+        <div class="problem-cards">
+            <div class="problem-card">
+                <h3>❌ أرقام بدون قصة</h3>
+                <p>عندك تقارير كتير بس مش قادر تترجمها لخطوات عملية تزود المبيعات</p>
             </div>
-        </div>
-        <div class="hero-image">
-            <img src="amira.png" alt="Amira - Sr.Data Analyst">
-        </div>
-    </section>
-
-    <!-- ==================== VISION SECTION ==================== -->
-    <section class="vision-section" id="vision">
-        <h2 class="section-title">🎯 رؤيتنا: جسر حقيقي بين التعلم والاحتراف</h2>
-        <div class="vision-content">
-            <p>
-                نحن نؤمن أن الفرق بين "محلل بيانات مبتدئ" و"خبير مطلوب في الشركات" ليس عدد الكورسات، بل هو 
-                <strong>الاحتكاك بمشاكل البيزنس الحقيقية</strong>. 
-                هدفنا هو تمكين كل باحث عن فرصة أو موظف طموح من امتلاك "الأدوات والمنطق" اللي تخليه يحل أعقد المشاكل التقنية في دقائق.
-            </p>
-        </div>
-    </section>
-
-    <!-- ==================== WHY SECTION ==================== -->
-    <section class="why-section" id="why">
-        <div class="why-container">
-            <h2 class="section-title">💡 لماذا XRDE Hub؟</h2>
-            <div class="why-grid">
-                <div class="why-card">
-                    <h3>🌍 نكهة السوق المحلي</h3>
-                    <p>مشاريعنا بتراعي طبيعة البيزنس في منطقتنا (صيدليات، عقارات، سلاسل توريد، ربط قواعد بيانات معقدة).</p>
-                </div>
-                <div class="why-card">
-                    <h3>💼 منطق البيزنس أولاً</h3>
-                    <p>مش بنعلمك "إزاي" تستخدم الأداة بس، بنعلمك "ليه" بنعمل التحليل ده وازاي تقدمه للمدير.</p>
-                </div>
-                <div class="why-card">
-                    <h3>📊 بورتفوليو يملأ العين</h3>
-                    <p>هتخرج من كل حقيبة بمشروع كامل (كود، داشبورد، دليل تشغيل) جاهز للعرض في أي انترفيو.</p>
-                </div>
-                <div class="why-card">
-                    <h3>⚡ توفير مجهود السنين</h3>
-                    <p>بنختصر عليك رحلة البحث عن "Errors" الربط والتحليل، وبنديك "الخلاصة" في حقيبة واحدة.</p>
-                </div>
-                <div class="why-card">
-                    <h3>🎓 منهج متطور</h3>
-                    <p>تدريب عملي على أحدث التقنيات والأدوات المستخدمة في سوق العمل الحالي.</p>
-                </div>
-                <div class="why-card">
-                    <h3>🚀 نتائج مثبتة</h3>
-                    <p>آلاف الطلاب حققوا ترقيات وظيفية وفرص عمل من خلال مشاريعنا.</p>
-                </div>
+            <div class="problem-card">
+                <h3>❌ ضياع العملاء</h3>
+                <p>مش عارف مين أهم عملائك اللي لازم تركز معاهم، ومين العملاء اللي قربوا يضيعوا</p>
+            </div>
+            <div class="problem-card">
+                <h3>❌ وقت مهدر</h3>
+                <p>بتقضي ساعات في التحليل والنتيجة "جداول صامتة" مفيش فيها قصة واضحة</p>
             </div>
         </div>
     </section>
 
-    <!-- ==================== PROJECTS SECTION ==================== -->
-    <section class="projects-section" id="projects">
-        <div class="projects-container">
-            <h2 class="section-title">🛠️ حقائب مشاريع جاهزة للانطلاق</h2>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="ribbon pro1"> متوفر الأن</div>
-                    <div class="project-header">
-                        <div class="project-number">01</div>
-                        <div class="project-name">Customer Segmentation Analysis Kit</div>
-                    </div>
-                    <div class="project-content">
-                        <h4 style="color: var(--primary); margin-bottom: 1rem;">ما ستحصل عليه:</h4>
-                        <ul class="project-features">
-                            <li>كود Python متقدم</li>
-                            <li>داشبورد Power BI تفاعلي</li>
-                            <li>ملفات بيانات حقيقية</li>
-                            <li>دليل عملي شامل</li>
-                        </ul>
-                        <p style="color: var(--text-light); margin-top: 1.5rem; font-size: 0.95rem; border-top: 1px solid #EEE; padding-top: 1rem;">
-                            <strong>الفائدة العملية:</strong> تقسيم العملاء باحترافية وتوجيه قرارات التسويق بناءً على سلوك الشراء.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card soon">
-                    <div class="ribbon">قريباً</div>
-                    <div class="project-header">
-                        <div class="project-number">02</div>
-                        <div class="project-name">Enterprise Integration Kit</div>
-                    </div>
-                    <div class="project-content">
-                        <h4 style="color: var(--primary); margin-bottom: 1rem;">ما ستحصل عليه:</h4>
-                        <ul class="project-features">
-                            <li>دليل ربط Oracle بـ Power BI</li>
-                            <li>ملفات SQL احترافية</li>
-                            <li>معالجة الأخطاء الشائعة</li>
-                            <li>تدفق بيانات تلقائي</li>
-                        </ul>
-                        <p style="color: var(--text-light); margin-top: 1.5rem; font-size: 0.95rem; border-top: 1px solid #EEE; padding-top: 1rem;">
-                            <strong>الفائدة العملية:</strong> حل أصعب مشاكل الربط التقني في الشركات الكبيرة.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card soon">
-                    <div class="ribbon">قريباً</div>
-                    <div class="project-header">
-                        <div class="project-number">03</div>
-                        <div class="project-name">Retail Insights Kit</div>
-                    </div>
-                    <div class="project-content">
-                        <h4 style="color: var(--primary); margin-bottom: 1rem;">ما ستحصل عليه:</h4>
-                        <ul class="project-features">
-                            <li>تحليل مبيعات متقدم</li>
-                            <li>تقارير ربحية تفاعلية</li>
-                            <li>توقعات موسمية</li>
-                            <li>استراتيجيات المخزون</li>
-                        </ul>
-                        <p style="color: var(--text-light); margin-top: 1.5rem; font-size: 0.95rem; border-top: 1px solid #EEE; padding-top: 1rem;">
-                            <strong>الفائدة العملية:</strong> فهم المواسم واكتشاف فرص النمو في السوق المصري.
-                        </p>
-                    </div>
+    <!-- ==================== SOLUTION SECTION ==================== -->
+    <section class="solution-section">
+        <h2 class="section-title">✅ الحل الكامل</h2>
+        
+        <div class="solution-container">
+            <div class="solution-content">
+                <h2>حوّل البيانات الجامدة لنتائج حية تضاعف أرباحك!</h2>
+                <p>في الكورس ده، مش بس بنعلمك أدوات، احنا بنعلمك <strong>منهجية تحليل السلوك الشرائي للعملاء</strong>.</p>
+                
+                <ul>
+                    <li><strong>فهم البيزنس أولاً:</strong> شرح كامل لنموذج RFM</li>
+                    <li><strong>استكشاف البيانات:</strong> 3 مستويات من الـ EDA</li>
+                    <li><strong>تطبيق عملي:</strong> 5 أجزاء لتقسيم العملاء باحترافية</li>
+                    <li><strong>فن السرد:</strong> 3 أجزاء لتحويل الأرقام لقصص مقنعة</li>
+                    <li><strong>أدوات قوية:</strong> Excel | Python | Power BI</li>
+                </ul>
+            </div>
+            <div class="solution-image">
+                <div class="solution-image-box">
+                    📈 📊 💡
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== ABOUT SECTION ==================== -->
+    <!-- ==================== CURRICULUM SECTION ==================== -->
+    <section class="curriculum-section" id="curriculum">
+        <h2 class="section-title">📚 محتوى الكورس (13 درس)</h2>
+        <p class="section-subtitle">رحلة تعليمية مكثفة من النظرية للتطبيق الاحترافي</p>
+        
+        <div class="curriculum-list">
+            <div class="curriculum-item">
+                <div class="lesson-number">1</div>
+                <h4>شرح نظري لمفهوم RFM</h4>
+                <p>فهم العميق لما هو RFM وليه تقنية قوية جداً للتحليل</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">2</div>
+                <h4>Business Understanding & Problem Solving</h4>
+                <p>فهم طبيعة المشاكل وكيفية حلها باحترافية</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">3</div>
+                <h4>EDA Part 1 - المستوى الأول</h4>
+                <p>استكشاف البيانات والبدء في فهم الأنماط</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">4</div>
+                <h4>EDA Part 2 - المستوى الثاني</h4>
+                <p>تحليل متقدم للعلاقات والارتباطات</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">5</div>
+                <h4>EDA Part 3 - المستوى الثالث</h4>
+                <p>اكتشاف الرؤى المخفية والشذوذ</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">6</div>
+                <h4>Applying RFM Part 1</h4>
+                <p>البدء في تطبيق نموذج RFM على البيانات</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">7</div>
+                <h4>Applying RFM Part 2</h4>
+                <p>حساب معايير RFM بدقة</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">8</div>
+                <h4>Applying RFM Part 3</h4>
+                <p>تقسيم العملاء إلى شرائح</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">9</div>
+                <h4>Applying RFM Part 4</h4>
+                <p>تحليل الشرائح والاستراتيجيات</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">10</div>
+                <h4>Applying RFM Part 5</h4>
+                <p>بناء الخطط التسويقية المستهدفة</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">11</div>
+                <h4>Data Storytelling Part 1</h4>
+                <p>أساسيات سرد البيانات والإقناع</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">12</div>
+                <h4>Data Storytelling Part 2</h4>
+                <p>بناء السرد البصري المؤثر</p>
+            </div>
+            <div class="curriculum-item">
+                <div class="lesson-number">13</div>
+                <h4>Data Storytelling Part 3</h4>
+                <p>تقديم النتائج للمديرين والعملاء بقوة</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FREE VIDEOS SECTION ==================== -->
+    <section class="free-videos-section" id="free-videos">
+        <h2 class="section-title">🎬 فيديوهات مجانية</h2>
+        <p class="section-subtitle">اشاهد أول فيديوين من الكورس مجاناً لتعرف مستوى الجودة</p>
+        
+        <div class="videos-container">
+            <div class="video-card">
+                <div class="video-header">
+                    <span class="video-title">الدرس الأول - شرح RFM</span>
+                    <button class="expand-btn" onclick="toggleVideo(0)">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="video-content" id="video-0">
+                    <p style="margin-bottom: 1rem; color: var(--text-gray);">شرح نظري شامل لمفهوم RFM وأهميته في التحليل</p>
+                    <iframe class="video-frame" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-header">
+                    <span class="video-title">الدرس الثاني - Business Understanding</span>
+                    <button class="expand-btn" onclick="toggleVideo(1)">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="video-content" id="video-1">
+                    <p style="margin-bottom: 1rem; color: var(--text-gray);">فهم المشاكل البيزنس وكيفية حلها باستخدام البيانات</p>
+                    <iframe class="video-frame" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION (NEW) ==================== -->
     <section class="about-section" id="about">
+        <h2 class="section-title">👋 مرحباً، أنا أميرة عبد السلام</h2>
+        
         <div class="about-container">
             <div class="about-image">
-                <img src="amira.png" alt="Amira Abdelsalam - Founder">
+                <img src="amira-profile.png" alt="أميرة عبد السلام - مؤسسة XRDE Hub">
             </div>
             <div class="about-content">
-                <h2>👋 عن XRDE Hub</h2>
+                <h2>رحلتي في عالم البيانات</h2>
                 <p>
-                    <strong>بخبرة تزيد عن 5 سنوات في قلب سوق تحليل البيانات</strong>، وعشرات المشاريع المنفذة في قطاعات حيوية، تم تأسيس XRDE Hub ليكون المختبر العملي اللي كنت أتمنى ألاقيه وأنا ببدأ طريقي.
+                    أنا <span class="about-highlight">أميرة عبد السلام</span>، ومهمتي هي تبسيط عالم البيانات للمبتدئين. كخريجة نظم معلومات وباحثة ماجستير، خلال خبرتي في المجال العملي في الشركات كـ <span class="about-highlight">Sr Data Analyst</span>
                 </p>
                 <p>
-                    <strong>هدفنا مش مجرد تعليم</strong>، هدفنا نخرج "قادة بيانات" بيعرفوا يغيروا واقع شركاتهم. كل مشروع في منصتنا مصمم بناءً على خبرة حقيقية من سوق العمل المصري.
+                    لاحظت الفجوة الكبيرة بين <span class="about-highlight">التعلم الأكاديمي واحتياجات سوق العمل</span> الحقيقية. الشركات لا تريد محللي بيانات يعرفون الأدوات فقط، بل تريد محللين يفهمون الأعمال ويترجمون البيانات لقرارات قابلة للتنفيذ.
                 </p>
                 <p>
-                    📍 <strong>مصر 🇪🇬</strong> - كلنا من هنا، ونفهم احتياجات السوق المحلي والعربي بشكل عميق.
+                    لذا أطلقت منصة <span class="about-highlight">XRDE Hub</span> لتقديم "حقائب مشاريع" عملية تحاكي الواقع بنسبة 100%. كل مشروع يحتوي على الكود الحقيقي، البيانات الحقيقية، والتحديات الحقيقية التي تواجهك في العمل.
+                </p>
+                <p>
+                    أؤمن أن <span class="about-highlight">"قراءة البيانات بسهولة"</span> هي المهارة الأهم في وقتنا الحالي. وأنا هنا لأعلمك هذه المهارة بطريقة عملية وملهمة.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- ==================== CTA SECTION ==================== -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2>🚀 جاهز تحول مسارك المهني وتبدأ أول مشروع حقيقي؟</h2>
-            <p>انضم لـ XRDE Hub دلوقتى وابدأ في بناء مستقبلك كخبير بيانات لا يمكن الاستغناء عنه.</p>
-            <a href="https://wa.me/201234567890" class="btn-whatsapp">
-                <i class="fab fa-whatsapp"></i>
-                تواصل معنا عبر واتساب الآن
-            </a>
+    <!-- ==================== COUNTDOWN SECTION ==================== -->
+    <section class="countdown-section">
+        <h2>⏰ العرض ينتهي في:</h2>
+        <div class="countdown-timer">
+            <div class="countdown-item">
+                <span class="countdown-value" id="days">15</span>
+                <span class="countdown-label">يوم</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="hours">12</span>
+                <span class="countdown-label">ساعة</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="minutes">34</span>
+                <span class="countdown-label">دقيقة</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="seconds">56</span>
+                <span class="countdown-label">ثانية</span>
+            </div>
+        </div>
+        <p><strong>الخصم ساري لأول 50 مشترك فقط!</strong></p>
+    </section>
+
+    <!-- ==================== TESTIMONIALS SECTION ==================== -->
+    <section class="testimonials-section" id="testimonials">
+        <h2 class="section-title">💬 آراء المتدربين</h2>
+        
+        <div class="slideshow-container">
+            <div class="testimonial active">
+                <p class="testimonial-text">
+                    "الكورس فرق معايا جداً في ترتيب أولويات التسويق، بقيت عارف أوجه الميزانية لمين بالظبط. النتائج كانت أفضل من توقعاتي!"
+                </p>
+                <div class="testimonial-author">أحمد محمود</div>
+                <div class="testimonial-role">مسوق رقمي - شركة تكنولوجيا</div>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">
+                    "الشرح واضح جداً وسهل المتابعة، والتطبيق العملي كان ممتاز. استخدمت الطريقة مع عملاء الشركة وشفت نتايج ملموسة في أسبوع!"
+                </p>
+                <div class="testimonial-author">فاطمة حسن</div>
+                <div class="testimonial-role">محللة بيانات - شركة عقارات</div>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">
+                    "أفضل استثمار في تطوري المهني. الكورس ساعدني أفهم أهمية البيانات والسرد البصري. بقيت أقدر أقدم تقارير تؤثر فعلاً!"
+                </p>
+                <div class="testimonial-author">محمد علي</div>
+                <div class="testimonial-role">مسؤول تسويق - متجر إلكتروني</div>
+            </div>
+            
+            <div class="slideshow-arrows">
+                <button class="arrow-btn" onclick="previousTestimonial()">← السابق</button>
+                <button class="arrow-btn" onclick="nextTestimonial()">التالي →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PRICING SECTION ==================== -->
+    <section class="pricing-section" id="pricing-section">
+        <h2 class="section-title">💰 الأسعار والعرض</h2>
+        
+        <div class="pricing-card">
+            <div class="original-price">600 جنيه مصري</div>
+            <div class="discount-price">390 ج.م</div>
+            <div class="discount-badge">خصم 35% - عرض محدود!</div>
+            
+            <div class="offer-info">
+                <p><strong>⚠️ تنبيه مهم:</strong></p>
+                <p>الخصم ساري <strong>لأول 50 مشترك فقط</strong></p>
+                <p>العرض ينتهي في <strong>1 مايو 2026</strong></p>
+            </div>
+
+            <button class="btn-primary" style="width: 100%; margin: 1.5rem 0; padding: 1.2rem;">
+                اشترك الآن بـ 390 جنيه فقط ✅
+            </button>
+
+            <div class="payment-methods">
+                <h4>طرق الدفع المتاحة:</h4>
+                <div class="payment-icons">
+                    <div class="payment-icon" title="Vodafone Cash">
+                        <i class="fas fa-mobile"></i><br><small>Vodafone Cash</small>
+                    </div>
+                    <div class="payment-icon" title="Fawry Pay">
+                        <i class="fas fa-credit-card"></i><br><small>Fawry</small>
+                    </div>
+                    <div class="payment-icon" title="InstaPay">
+                        <i class="fas fa-university"></i><br><small>InstaPay</small>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- ==================== FOOTER ==================== -->
     <footer>
-        <p>&copy; 2026 XRDE Hub - منصة تحليل البيانات العملية | جميع الحقوق محفوظة</p>
-        <p>مصنوعة بـ ❤️ لخدمة سوق البيانات العربي</p>
+        <p>&copy; 2024 XRDE Academy - كورس RFM Analysis والـ Data Storytelling</p>
+        <p>من بطاقة أميرة عبد السلام | جميع الحقوق محفوظة | صُنع بـ ❤️ لتمكين محللي البيانات في الوطن العربي</p>
     </footer>
 
     <script>
-        // Hamburger Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
+        // Countdown Timer
+        function updateCountdown() {
+            const countdownDate = new Date("May 1, 2026").getTime();
+            
+            const countdown = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById("days").textContent = days;
+                document.getElementById("hours").textContent = hours;
+                document.getElementById("minutes").textContent = minutes;
+                document.getElementById("seconds").textContent = seconds;
+                
+                if (distance < 0) {
+                    clearInterval(countdown);
+                    document.querySelector('.countdown-section').innerHTML = '<h2>انتهى العرض!</h2>';
+                }
+            }, 1000);
+        }
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
+        // Toggle Videos
+        function toggleVideo(index) {
+            const video = document.getElementById(`video-${index}`);
+            video.classList.toggle('active');
+        }
 
-        // Close menu when clicking on a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
+        // Testimonials Slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('nav')) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
+        function showTestimonial(index) {
+            testimonials.forEach(t => t.classList.remove('active'));
+            testimonials[index].classList.add('active');
+        }
+
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+
+        function previousTestimonial() {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+
+        // Initialize
+        updateCountdown();
+        
+        // Auto-rotate testimonials every 5 seconds
+        setInterval(nextTestimonial, 5000);
     </script>
 </body>
 </html>
