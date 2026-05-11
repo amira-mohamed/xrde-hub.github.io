@@ -940,7 +940,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             margin-bottom: 2rem;
         }
 
+         /* ==================== Payment Method ==================== */
+   .payment-methods {
+            margin: 2rem 0;
+        }
 
+        .payment-methods h4 {
+            margin-bottom: 1rem;
+            color: var(--accent-cyan);
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .payment-icon {
+            background: rgba(0, 217, 255, 0.15);
+            padding: 0.8rem;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            transition: all 0.3s;
+            color: var(--accent-cyan);
+        }
+
+        .payment-icon:hover {
+            background: rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+        }
         /* ==================== FOOTER ==================== */
         footer {
             background: rgba(2, 6, 23, 0.8);
@@ -1408,6 +1438,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button class="btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">
             اشترك الآن وابدأ رحلتك 🚀
         </button>
+
+     <div class="payment-methods">
+                <h4>طرق الدفع المتاحة:</h4>
+                <div class="payment-icons">
+                    <div class="payment-icon" title="Vodafone Cash">
+                        <i class="fas fa-mobile"></i><br><small>Vodafone Cash</small>
+                    </div>
+                    <div class="payment-icon" title="Fawry Pay">
+                        <i class="fas fa-credit-card"></i><br><small>Fawry</small>
+                    </div>
+                    <div class="payment-icon" title="InstaPay">
+                        <i class="fas fa-university"></i><br><small>InstaPay</small>
+                    </div>
+                </div>
+    </div>
     </section>
 
 
