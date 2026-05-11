@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W7G42TKH');</script>
+<!-- End Google Tag Manager -->
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كورس RFM Analysis - حول بياناتك لأرباح | XRDE Hub</title>
@@ -273,10 +282,10 @@
 
         .problem-card {
             background: rgba(26, 77, 122, 0.2);
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: 15px;
             border: 1px solid rgba(0, 217, 255, 0.3);
-            box-shadow: 0 0 20px rgba(0, 217, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.1), inset 0 0 20px rgba(0, 217, 255, 0.05);
             transition: all 0.3s;
             backdrop-filter: blur(10px);
         }
@@ -288,15 +297,16 @@
         }
 
         .problem-card h3 {
-         font-size: 1.4rem;
-            color: var(--accent-cyan);
+            background: linear-gradient(135deg, #ff6b6b, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+            font-size: 1.3rem;
         }
 
         .problem-card p {
-          color: var(--text-gray);
-            line-height: 1.8;
+            color: var(--text-gray);
         }
 
         /* ==================== SOLUTION SECTION ==================== */
@@ -360,7 +370,7 @@
 
         .solution-image-box {
             width: 100%;
-            height: auto;
+            height:auto;
             background: linear-gradient(135deg, rgba(74, 144, 226, 0.3) 0%, rgba(0, 217, 255, 0.2) 100%);
             border-radius: 15px;
             border: 1px solid rgba(0, 217, 255, 0.4);
@@ -640,95 +650,6 @@
             color: var(--text-gray);
         }
 
-
-       /* ==================== STATISTICS SECTION ==================== */
-        .stats-section {
-            background: rgba(10, 25, 47, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid rgba(0, 217, 255, 0.2);
-            box-shadow: 0 0 30px rgba(0, 217, 255, 0.1);
-            padding: 4rem 2rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-card {
-            background: rgba(26, 77, 122, 0.2);
-            padding: 2.5rem 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 217, 255, 0.3);
-            text-align: center;
-            box-shadow: 0 0 20px rgba(0, 217, 255, 0.1);
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 40px rgba(0, 217, 255, 0.3);
-            border-color: rgba(0, 217, 255, 0.6);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-electric));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--text-gray);
-            font-size: 1rem;
-        }
-
-
-        
-        /* ==================== SUPPORT SECTION ==================== */
-        .support-section {
-            background: transparent;
-        }
-
-        .support-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .support-card {
-            background: rgba(26, 77, 122, 0.2);
-            padding: 2.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 217, 255, 0.3);
-            box-shadow: 0 0 20px rgba(0, 217, 255, 0.1);
-            transition: all 0.3s;
-        }
-
-        .support-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 40px rgba(0, 217, 255, 0.3);
-        }
-
-        .support-card h3 {
-            font-size: 1.3rem;
-            color: var(--accent-electric);
-            margin-bottom: 1rem;
-        }
-
-        .support-card p {
-            color: var(--text-gray);
-        }
-
-        
         /* ==================== TESTIMONIALS SECTION ==================== */
         .testimonials-section {
             background: transparent;
@@ -806,129 +727,103 @@
             transform: translateY(-3px);
         }
 
-     /* ==================== PRICING SECTION ==================== */
+        /* ==================== PRICING SECTION ==================== */
         .pricing-section {
             background: transparent;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .pricing-card {
-            background: rgba(26, 77, 122, 0.2);
-            padding: 3rem 2rem;
-            border-radius: 15px;
-            border: 2px solid rgba(0, 217, 255, 0.3);
-            box-shadow: 0 0 30px rgba(0, 217, 255, 0.2);
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 0 60px rgba(0, 217, 255, 0.4);
-            border-color: rgba(0, 217, 255, 0.6);
-        }
-
-        .pricing-card.featured {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 50px rgba(0, 217, 255, 0.4);
-        }
-
-        .pricing-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            margin-bottom: 0.5rem;
-        }
-
-        .pricing-price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-electric));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.5rem;
-        }
-
-        .original-price {
-            font-size: 0.95rem;
-            text-decoration: line-through;
-            color: var(--text-gray);
-            opacity: 0.7;
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin: 2rem 0;
-        }
-
-        .pricing-features li {
-            padding: 0.8rem 0;
-            color: var(--text-gray);
-            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .pricing-features li::before {
-            content: "✓";
-            color: var(--accent-electric);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .pricing-button {
-            width: 100%;
-            background: linear-gradient(135deg, var(--primary-royal) 0%, var(--accent-cyan) 100%);
-            color: white;
-            padding: 1rem;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 700;
-            margin-top: 1.5rem;
-            transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
-        }
-
-        .pricing-button:hover {
-            box-shadow: 0 0 40px rgba(0, 217, 255, 0.6);
-            transform: translateY(-3px);
-        }
-
-        /* ==================== CTA FINAL ==================== */
-        .cta-final {
-            background: rgba(74, 144, 226, 0.1);
-            border: 1px solid rgba(0, 217, 255, 0.3);
-            border-radius: 15px;
-            text-align: center;
-            padding: 4rem 2rem;
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .cta-final h2 {
-            font-size: 2.5rem;
+        .pricing-card {
+            background: rgba(74, 144, 226, 0.15);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 0 60px rgba(0, 217, 255, 0.3);
+            text-align: center;
+            max-width: 500px;
+            margin: 2rem auto;
+            border: 2px solid rgba(0, 217, 255, 0.4);
+            backdrop-filter: blur(15px);
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            box-shadow: 0 0 80px rgba(0, 217, 255, 0.5);
+            border-color: rgba(0, 217, 255, 0.6);
+            transform: translateY(-10px);
+        }
+
+        .original-price {
+            font-size: 1.3rem;
+            text-decoration: line-through;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+            color: var(--text-gray);
+        }
+
+        .discount-price {
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-electric));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
         }
 
-        .cta-final p {
-            color: var(--text-gray);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
+        .discount-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
         }
 
+        .offer-info {
+            margin: 2rem 0;
+            background: rgba(0, 217, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            line-height: 1.8;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            color: var(--text-light);
+        }
+
+        .payment-methods {
+            margin: 2rem 0;
+        }
+
+        .payment-methods h4 {
+            margin-bottom: 1rem;
+            color: var(--accent-cyan);
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .payment-icon {
+            background: rgba(0, 217, 255, 0.15);
+            padding: 0.8rem;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            transition: all 0.3s;
+            color: var(--accent-cyan);
+        }
+
+        .payment-icon:hover {
+            background: rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+        }
 
         /* ==================== FOOTER ==================== */
         footer {
@@ -994,6 +889,12 @@
     </style>
 </head>
 <body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7G42TKH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
     <!-- ==================== NAVBAR ==================== -->
     <nav>
         <div class="logo"> <img src="v1.png" alt="XRDE Logo" class="logo-img"> </div>
@@ -1012,42 +913,19 @@
             بياناتك كتير.. بس مش عارف تطلع منها <span class="highlight">"قرار"</span>؟
         </h1>
         <p>
-            هنعلمك إزاي تحول الأرقام لقرارات بيزنس حقيقية
-           من أول تنظيف البيانات بالاكسيل لحد التحليل المتطور باستخدام Python و
-           Dashboard احترافي على Power BI. 
+            تعلم كيفية تحويل البيانات الخام إلى استراتيجيات تسويقية قوية وتضاعف أرباح شركتك باستخدام نموذج RFM والـ Data Storytelling
         </p>
         <div class="cta-buttons">
             <button class="btn-primary" onclick="document.getElementById('pricing-section').scrollIntoView({behavior: 'smooth'})">
-               أبدأ رحلتك الأن 🚀
+                اشترك الآن - 390 جنيه فقط
             </button>
             <a href="#free-videos" class="btn-secondary">اشاهد الفيديوهات المجانية</a>
         </div>
     </section>
 
     <!-- ==================== PROBLEM SECTION ==================== -->
-    <!-- WHY SECTION -->
     <section class="problem-section">
-        <h2 class="section-title">ليه الكورس ده مختلف عن أي حاجة شوفتها؟</h2>
-        <p class="section-subtitle">إحنا مش جايين نشرح أدوات.. إحنا جايين "نشغل" الأدوات دي</p>
-        
-        <div class="problem-cards">
-            <div class="problem-card">
-                <h3>🎯 مشروع RFM كامل</h3>
-                <p>هتعرف إزاي تقسم العملاء لشرائح (من العملاء الوفيين لحد اللي قربوا يسيبوا الشركة) عشان التسويق يشتغل صح.</p>
-            </div>
-            <div class="problem-card">
-                <h3>💪 مفيش استسهال</h3>
-                <p>مش هنديك ملفات جاهزة تنسخها.. إحنا بنرخم عليك عشان تطبق بإيدك وتغلط وتتعلم، عشان لما تروح انترفيو تكون فاهم كل سطر اتكتب ليه.</p>
-            </div>
-            <div class="problem-card">
-                <h3>🔗 تكامل حقيقي</h3>
-                <p>هتشوف إزاي الأدوات بتسلم بعضها في دورة حياة البيانات داخل أي شركة محترمة.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="problem-section">
-        <h2 class="section-title">🔴بنعرض مشكلة بيزنس حقيقية</h2>
+        <h2 class="section-title">🔴 المشكلة الحقيقية</h2>
         <p class="section-subtitle">لو أنت مسوق، محلل بيانات مبتدئ، أو صاحب شركة - أكيد واجهت المشاكل دي</p>
         
         <div class="problem-cards">
@@ -1182,7 +1060,7 @@
                 <div class="video-content" id="video-0">
                     <p style="margin-bottom: 1rem; color: var(--text-gray);">شرح نظري شامل لمفهوم RFM وأهميته في التحليل</p>
                         <iframe class="video-frame" 
-                                src="https://www.youtube.com/embed/ScWGqSqqUh0" 
+                                src="https://www.youtube.com/embed/FQ2YDQgzJRM" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 referrerpolicy="strict-origin-when-cross-origin" 
@@ -1192,15 +1070,15 @@
             </div>
             <div class="video-card">
                 <div class="video-header">
-                    <span class="video-title">الدرس الثاني - Business Understanding</span>
+                    <span class="video-title">الدرس السادس - Business Understanding</span>
                     <button class="expand-btn" onclick="toggleVideo(1)">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
                 <div class="video-content" id="video-1">
-                    <p style="margin-bottom: 1rem; color: var(--text-gray);">فهم المشاكل البيزنس وكيفية حلها باستخدام البيانات</p>
+                    <p style="margin-bottom: 1rem; color: var(--text-gray);">تجهيز البيانات لتطبيق نموذج RFM</p>
                          <iframe class="video-frame" 
-                                src="https://www.youtube.com/embed/32q1JqrHAlo" 
+                                src="https://www.youtube.com/embed/MYMy2IJRgZg" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 referrerpolicy="strict-origin-when-cross-origin" 
@@ -1235,9 +1113,9 @@
             </div>
         </div>
     </section>
-<!--
-     ==================== COUNTDOWN SECTION ====================  
-    <section class="countdown-section"> 
+
+    <!-- ==================== COUNTDOWN SECTION ==================== -->
+    <section class="countdown-section">
         <h2>⏰ العرض ينتهي في:</h2>
         <div class="countdown-timer">
             <div class="countdown-item">
@@ -1258,50 +1136,6 @@
             </div>
         </div>
         <p><strong>الخصم ساري لأول 50 مشترك فقط!</strong></p>
-    </section>
--->
-    <!-- ======================== STATISTICS SECTION =========================-->
-
-    <!-- STATISTICS SECTION -->
-    <section class="stats-section" id="stats">
-        <h2 class="section-title">عيلتنا بتكبر.. والنتائج هي الدليل</h2>
-        
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">+1000</div>
-                <div class="stat-label">متعلم بدأوا رحلتهم معانا على يوتيوب</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">+50</div>
-                <div class="stat-label">طالب انضموا لكورساتنا</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3</div>
-                <div class="stat-label">مسارات تقنية متكاملة (Excel - Python - Power BI)</div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ====================== SUPPORT SECTION ============================== -->
-    <section class="support-section">
-        <h2 class="section-title">🤝 إحنا معاك.. مش بس فيديوهات!</h2>
-        <p class="section-subtitle">عشان عارفين إن التطبيق بيطلع أسئلة، عملنا لك نظام دعم يحميك من التشتت</p>
-        
-        <div class="support-cards">
-            <div class="support-card">
-                <h3>💬 جروب واتساب للمشتركين</h3>
-                <p>مكان بنرد فيه على استفساراتك التقنية وبنوجهك لو وقفت في أي خطوة (الهدف هو التوجيه مش حل الكود ليك).</p>
-            </div>
-            <div class="support-card">
-                <h3>📋 تطوير الـ CV ونموذج الأعمال</h3>
-                <p>بعد ما تخلص المشروع، بنساعدك إزاي تعرضه في الـ Portfolio بتاعك وبنراجع معاك الـ CV عشان تظهر مهاراتك التقنية بشكل احترافي قدام الـ HR.</p>
-            </div>
-            <div class="support-card">
-                <h3>🎓 محاضرات إضافية</h3>
-                <p>لو احتجت شرح إضافي أو عندك أسئلة متقدمة، دايماً في محاضرات جديدة وفرص للتطوير المستمر.</p>
-            </div>
-        </div>
     </section>
 
     <!-- ==================== TESTIMONIALS SECTION ==================== -->
@@ -1338,59 +1172,43 @@
         </div>
     </section>
 
-
-    <!-- PRICING SECTION -->
-    <section class="pricing-section" id="pricing">
-        <h2 class="section-title">💰 اختار الباقة اللي تناسب طموحك</h2>
+    <!-- ==================== PRICING SECTION ==================== -->
+    <section class="pricing-section" id="pricing-section">
+        <h2 class="section-title">💰 الأسعار والعرض</h2>
         
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <div class="pricing-name">📘 باقة المسار التقني</div>
-                <div class="pricing-price">199<span style="font-size: 0.5em;"> ج.م</span></div>
-                <ul class="pricing-features">
-                    <li>فيديوهات المشروع كاملة (13 فيديو)</li>
-                    <li>تطبيق بـ Excel و Python و Power BI</li>
-                    <li>تحديات تطبيقية لضمان الفهم</li>
-                    <li>جروب واتساب للدعم الفنى ومشاركة المشاريع مع مجتمع محللين البيانات </li>
-                    <li>وصول مدى الحياة لمحتوى الكورس وتحديثاته</li>
-                </ul>
-              <!--  <button class="pricing-button" >اشترك الآن</button> -->
-                <a href="https://wa.me/+201557361769?text= الاشتراك فى باقة المسار التقني 199ج" class="btn-primary">
-                <i class="fab fa-whatsapp"></i>
-               اشترك الآن 🎉
-                </a>
+        <div class="pricing-card">
+            <div class="original-price">600 جنيه مصري</div>
+            <div class="discount-price">390 ج.م</div>
+            <div class="discount-badge">خصم 35% - عرض محدود!</div>
+            
+            <div class="offer-info">
+                <p><strong>⚠️ تنبيه مهم:</strong></p>
+                <p>الخصم ساري <strong>لأول 50 مشترك فقط</strong></p>
+                <p>العرض ينتهي في <strong>1 مايو 2026</strong></p>
             </div>
-            <div class="pricing-card featured">
-                <div class="pricing-name">⭐ باقة المحلل الشامل</div>
-                <div class="pricing-price">450<span style="font-size: 0.5em;"> ج.م</span></div>
-                <div style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 1rem;">  450 ج.م بدل
-                    <span style="text-decoration: line-through;">600 ج.م</span> 
+
+            <button class="btn-primary" 
+             onclick="window.open('https://wa.me/+201557361769?text=تفاصيل+للاشتراك+في+كورس+XRDE', '_blank')"
+            style="width: 100%; margin: 1.5rem 0; padding: 1.2rem;" >
+                اشترك الآن بـ 390 جنيه فقط ✅
+            </button>
+
+            <div class="payment-methods">
+                <h4>طرق الدفع المتاحة:</h4>
+                <div class="payment-icons">
+                    <div class="payment-icon" title="Vodafone Cash">
+                        <i class="fas fa-mobile"></i><br><small>Vodafone Cash</small>
+                    </div>
+                    <div class="payment-icon" title="Fawry Pay">
+                        <i class="fas fa-credit-card"></i><br><small>Fawry</small>
+                    </div>
+                    <div class="payment-icon" title="InstaPay">
+                        <i class="fas fa-university"></i><br><small>InstaPay</small>
+                    </div>
                 </div>
-                <ul class="pricing-features">
-                    <li>كل محتوى باقة Starter</li>
-                    <li>+ كورس مهارات محلل البيانات (7 ساعات)</li>
-                    <li>+ دعم فني وتوجيه شخصي (1:1): هنكون معاك خطوة بخطوة لمدة شهرين من اشتراكك، ليك جلستين 'فردي' كل شهر على الواتساب </li>
-                    <li>+ مراجعة نهائية للمشروع والـ CV</li>
-                    <li>+ أولوية في الإجابة على الأسئلة</li>
-                </ul>
-              <!--  <button class="pricing-button">اشترك الآن 🎉</button>-->
-                <a href="https://wa.me/+201557361769?text=الاشتراك فى باقة المحلل الشامل 450ج" class="btn-primary">
-                <i class="fab fa-whatsapp"></i>
-               اشترك الآن 🎉
-                </a>
             </div>
         </div>
     </section>
-
-    <!-- CTA FINAL -->
-    <section class="cta-final">
-        <h2>جاهز تبدأ وتضيف أول مشروع حقيقي لملف أعمالك؟</h2>
-        <p>معنا هتبني مشروع حقيقي يخليك متميز في الانترفيوهات والوظائف. لا تتردد، ابدأ الآن!</p>
-        <button class="btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">
-            اشترك الآن وابدأ رحلتك 🚀
-        </button>
-    </section>
-
 
     <!-- ==================== FOOTER ==================== -->
     <footer>
